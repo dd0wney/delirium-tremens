@@ -10,7 +10,7 @@ export function getChapterUrl(chapter: Chapter): string {
 }
 
 export function getSectionUrl(chapter: Chapter, sectionId: string): string {
-	return `${base}/chapters/${chapter.slug}#${sectionId}`;
+	return `${base}/blog/${chapter.slug}#${sectionId}`;
 }
 
 export function getBlogUrl(): string {

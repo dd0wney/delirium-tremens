@@ -8,18 +8,15 @@
 	// Subscribe to theme changes
 	theme.subscribe((value) => {
 		currentTheme = value;
-		console.log('Theme changed to:', value); // Debug log
 	});
 
 	onMount(() => {
-		console.log('ThemeToggle mounted'); // Debug log
 		theme.initialize();
 	});
 
 	function toggleTheme() {
 		if (browser) {
 			const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-			console.log('Toggling theme to:', newTheme); // Debug log
 			theme.set(newTheme);
 		}
 	}

@@ -9,7 +9,6 @@ function createThemeStore() {
 
     // Handle theme changes
     function setTheme(newTheme: Theme) {
-        console.log('Setting theme to:', newTheme); // Debug log
         if (browser) {
             // Remove both classes first to ensure clean state
             document.documentElement.classList.remove('light', 'dark');
@@ -26,7 +25,6 @@ function createThemeStore() {
             const savedTheme = localStorage.getItem('theme') as Theme | null;
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-            console.log('Initializing theme to:', initialTheme); // Debug log
             setTheme(initialTheme);
 
             // Listen for system theme changes
