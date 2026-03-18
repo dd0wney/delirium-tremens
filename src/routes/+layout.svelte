@@ -14,10 +14,6 @@
 	import Menu from 'lucide-svelte/icons/menu';
 	import X from 'lucide-svelte/icons/x';
 	import Github from 'lucide-svelte/icons/github';
-	import Headphones from 'lucide-svelte/icons/headphones';
-	import Podcast from 'lucide-svelte/icons/podcast';
-	import Radio from 'lucide-svelte/icons/radio';
-	import Rss from 'lucide-svelte/icons/rss';
 
 	let { children }: { children: Snippet } = $props();
 	let hasAudio = $derived(!!$player.currentArticle?.audioUrl);
@@ -52,61 +48,40 @@
 	Skip to main content
 </a>
 
-<div class="min-h-screen flex bg-[var(--background)]">
+<div class="min-h-screen flex bg-[var(--background)] text-[var(--text)]">
 	<!-- DESKTOP SIDEBAR -->
-	<aside class="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:w-[28rem] lg:overflow-y-auto lg:border-r lg:border-[var(--border)] lg:flex lg:flex-col">
-		<div class="flex h-full flex-col p-10">
-			<div class="mb-12">
-				<div class="mb-6 flex justify-center">
-					<div class="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[var(--primary)] to-[var(--primary-hover)]">
-						<span class="text-2xl font-bold text-[var(--background)]">DT</span>
-					</div>
+	<header class="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-[28rem] lg:overflow-y-auto lg:border-x lg:border-[var(--border)] lg:bg-[var(--sidebar-bg)]">
+		<div class="relative z-10 mx-auto px-8 py-12 w-full flex flex-col min-h-full">
+			<!-- Poster placeholder -->
+			<a href="{base}/" class="relative block w-full overflow-hidden rounded-lg bg-gradient-to-br from-slate-200 to-slate-300 shadow-lg mb-10" aria-label="Homepage">
+				<div class="aspect-square flex items-center justify-center">
+					<div class="text-6xl font-bold text-slate-700">DT</div>
 				</div>
-				<h1 class="text-center text-2xl font-bold text-[var(--text)]">Delirium Tremens</h1>
-				<p class="mt-2 text-center text-sm text-[var(--text-muted)]">
-					Deep dives into algorithms, system design, and security.
-				</p>
-				<p class="mt-1 text-center text-xs text-[var(--text-muted)]">
-					Hosted by Darragh Downey
-				</p>
-				<p class="mt-6 text-center text-sm leading-relaxed text-[var(--text-muted)]">
-					Explore solutions to programming interview questions, algorithms, data structures,
-					and system design with detailed walkthroughs.
+				<div class="absolute inset-0 rounded-lg ring-1 ring-black/10 ring-inset"></div>
+			</a>
+
+			<!-- Title & Description -->
+			<div class="text-center lg:text-left mb-12">
+				<h1 class="text-xl font-bold text-[var(--text)]">
+					<a href="{base}/">Delirium Tremens</a>
+				</h1>
+				<p class="mt-3 text-base leading-8 font-medium text-[var(--text-secondary)]">
+					Deep dives into algorithms, data structures, system design, and security.
 				</p>
 			</div>
 
-			<nav class="mb-12 space-y-3">
-				<a href="{base}/" class="flex items-center gap-3 text-sm font-medium text-[var(--text)] transition-colors hover:text-[var(--primary)]">
-					<Home size={16} /> Home
-				</a>
-				<a href="{base}/blog" class="flex items-center gap-3 text-sm font-medium text-[var(--text)] transition-colors hover:text-[var(--primary)]">
-					<BookOpen size={16} /> Articles
-				</a>
-				<a href="{base}/about" class="flex items-center gap-3 text-sm font-medium text-[var(--text)] transition-colors hover:text-[var(--primary)]">
-					<User size={16} /> About
-				</a>
-			</nav>
-
-			<div class="mb-12">
-				<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-[var(--text-muted)]">Listen on</p>
-				<div class="space-y-3">
-					<div class="flex items-center gap-3 text-sm text-[var(--text-muted)]"><Headphones size={14} /> Spotify</div>
-					<div class="flex items-center gap-3 text-sm text-[var(--text-muted)]"><Podcast size={14} /> Apple Podcasts</div>
-					<div class="flex items-center gap-3 text-sm text-[var(--text-muted)]"><Radio size={14} /> Overcast</div>
-					<div class="flex items-center gap-3 text-sm text-[var(--text-muted)]"><Rss size={14} /> RSS Feed</div>
-				</div>
-			</div>
-
+			<!-- Flex spacer -->
 			<div class="flex-1"></div>
 
+			<!-- Footer -->
 			<div class="border-t border-[var(--border)] pt-6">
 				<ThemeToggle />
 			</div>
 		</div>
-	</aside>
+	</header>
 
 	<!-- MOBILE TOP BAR -->
-	<div class="fixed inset-x-0 top-0 z-40 flex h-16 items-center justify-between border-b border-[var(--border)] bg-[var(--background)]/80 px-6 backdrop-blur lg:hidden">
+	<div class="fixed inset-x-0 top-0 z-40 flex h-16 items-center justify-between border-b border-[var(--border)] bg-[var(--background)] px-6 lg:hidden">
 		<h1 class="text-lg font-bold text-[var(--text)]">Delirium Tremens</h1>
 		<button
 			type="button"
@@ -142,14 +117,12 @@
 		aria-label="Mobile navigation"
 	>
 		<div class="space-y-8 p-6">
-			<div>
-				<div class="mb-4 flex justify-center">
-					<div class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[var(--primary)] to-[var(--primary-hover)]">
-						<span class="text-lg font-bold text-[var(--background)]">DT</span>
-					</div>
+			<div class="text-center">
+				<div class="mx-auto mb-4 w-20 h-20 rounded-lg bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
+					<span class="text-3xl font-bold text-slate-700">DT</span>
 				</div>
-				<h2 class="text-center text-xl font-bold text-[var(--text)]">Delirium Tremens</h2>
-				<p class="mt-2 text-center text-xs text-[var(--text-muted)]">
+				<h2 class="text-xl font-bold text-[var(--text)]">Delirium Tremens</h2>
+				<p class="mt-2 text-sm text-[var(--text-secondary)]">
 					Deep dives into algorithms, system design, and security.
 				</p>
 			</div>
@@ -167,16 +140,6 @@
 			</nav>
 
 			<div class="border-t border-[var(--border)] pt-6">
-				<p class="mb-3 text-xs font-semibold uppercase tracking-wide text-[var(--text-muted)]">Listen on</p>
-				<div class="space-y-3">
-					<div class="flex items-center gap-3 text-sm text-[var(--text-muted)]"><Headphones size={14} /> Spotify</div>
-					<div class="flex items-center gap-3 text-sm text-[var(--text-muted)]"><Podcast size={14} /> Apple Podcasts</div>
-					<div class="flex items-center gap-3 text-sm text-[var(--text-muted)]"><Radio size={14} /> Overcast</div>
-					<div class="flex items-center gap-3 text-sm text-[var(--text-muted)]"><Rss size={14} /> RSS Feed</div>
-				</div>
-			</div>
-
-			<div class="border-t border-[var(--border)] pt-6">
 				<ThemeToggle />
 			</div>
 		</div>
@@ -184,12 +147,13 @@
 
 	<!-- MAIN CONTENT -->
 	<main id="main-content" class="flex-1 pt-16 lg:ml-[28rem] lg:pt-0">
-		{@render children()}
-		<PodcastPlayer />
+		<div class="border-t border-[var(--border)] lg:border-t-0 lg:relative lg:mb-28">
+			{@render children()}
+		</div>
 
-		<footer class="mt-12 border-t border-[var(--border)] px-6 py-8 lg:mt-24" class:pb-24={hasAudio}>
+		<footer class="border-t border-[var(--border)] px-6 py-8 lg:mt-24" class:pb-24={hasAudio}>
 			<div class="mx-auto flex max-w-4xl flex-col items-center gap-4 sm:flex-row sm:justify-between">
-				<p class="text-sm text-[var(--text-muted)]">&copy; 2024 Darragh Downey</p>
+				<p class="text-sm text-[var(--text-muted)]">&copy; 2025 Darragh Downey</p>
 				<a
 					href="https://github.com/dd0wney/delirium-tremens"
 					target="_blank"
@@ -200,5 +164,7 @@
 				</a>
 			</div>
 		</footer>
+
+		<PodcastPlayer />
 	</main>
 </div>

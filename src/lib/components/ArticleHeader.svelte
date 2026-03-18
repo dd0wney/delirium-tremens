@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { Article, Chapter } from '$lib/types';
-	import { getTopicAssets } from '$lib/utils/icons';
 	import PlayButton from './PlayButton.svelte';
 	import { player } from '$lib/stores/player';
 
@@ -8,22 +7,15 @@
 		article: Article;
 	} = $props();
 
-	let assets = $derived(getTopicAssets(article.category.toLowerCase()));
 	let isPlaying = $derived($player.currentArticle?.slug === article.slug && $player.isPlaying);
 	let chapterNum = $derived('chapter' in article ? (article as Chapter).chapter : null);
 </script>
 
-<header class="flex flex-col items-start gap-6">
-	<!-- Date in monospace -->
-	<div class="flex items-center gap-3 font-mono text-sm text-[var(--text-muted)]">
-		<time datetime={article.date}>
-			{new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-		</time>
-		{#if article.readingTime}
-			<span aria-hidden="true">&middot;</span>
-			<span>{article.readingTime}</span>
-		{/if}
-	</div>
+<header class="flex flex-col">
+	<!-- Date in monospace (order-first) -->
+	<time datetime={article.date} class="order-first font-mono text-sm leading-7 text-[var(--text-muted)]">
+		{new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+	</time>
 
 	<!-- Play button + Title row -->
 	<div class="flex items-center gap-6">
@@ -34,13 +26,16 @@
 				size="lg"
 			/>
 		{/if}
-		<h1 class="text-4xl font-bold text-[var(--text)] sm:text-5xl">
+		<h1 class="mt-2 text-4xl font-bold text-[var(--text)]">
 			{#if chapterNum}<span class="text-[var(--primary)]">{chapterNum}: </span>{/if}{article.title}
 		</h1>
 	</div>
 
 	<!-- Description -->
-	<p class="text-lg font-medium leading-8 text-[var(--text-muted)]">
+	<p class="mt-3 text-lg leading-8 font-medium text-[var(--text-secondary)]">
 		{article.description}
 	</p>
+
+	<!-- Divider -->
+	<hr class="my-12 border-[var(--border)]" />
 </header>

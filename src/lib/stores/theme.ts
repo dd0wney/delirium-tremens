@@ -5,7 +5,7 @@ type Theme = 'light' | 'dark';
 
 function createThemeStore() {
     // Initialize with a default value that won't cause hydration issues
-    const { subscribe, set } = writable<Theme>('dark');
+    const { subscribe, set } = writable<Theme>('light');
 
     // Handle theme changes
     function setTheme(newTheme: Theme) {

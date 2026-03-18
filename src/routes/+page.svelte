@@ -11,56 +11,49 @@
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-<div class="max-w-4xl mx-auto px-6 py-8 lg:py-12">
-	<!-- Episodes/Articles List -->
-	<div class="space-y-6">
+<div class="pt-16 pb-12 sm:pb-4 lg:pt-12">
+	<div class="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4">
+		<h1 class="text-2xl leading-7 font-bold text-[var(--text)]">Episodes</h1>
+	</div>
+
+	<div class="divide-y divide-[var(--border)] sm:mt-4 lg:mt-8 lg:border-t lg:border-[var(--border)]">
 		{#each chapters as episode, index (episode.slug)}
-			<article class="group">
-				<!-- Date -->
-				<div class="flex items-center gap-x-4 mb-2">
-					<time datetime={episode.date} class="font-mono text-sm text-[var(--text-muted)]">
-						{new Date(episode.date ?? '').toLocaleDateString('en-US', {
-							year: 'numeric',
-							month: 'short',
-							day: 'numeric'
-						})}
-					</time>
-					{#if episode.category}
-						<span class="text-xs text-[var(--text-muted)] font-medium uppercase tracking-wide">
-							{episode.category}
-						</span>
-					{/if}
+			<article class="py-10 sm:py-12">
+				<div class="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4">
+					<div class="flex flex-col items-start">
+						<!-- Date in monospace -->
+						<time datetime={episode.date} class="order-first font-mono text-sm leading-7 text-[var(--text-muted)]">
+							{new Date(episode.date ?? '').toLocaleDateString('en-US', {
+								year: 'numeric',
+								month: 'short',
+								day: 'numeric'
+							})}
+						</time>
+
+						<!-- Title -->
+						<h2 class="mt-2 text-lg font-bold text-[var(--text)]">
+							<a href="{base}/blog/{episode.slug}" class="hover:text-[var(--primary)]">
+								{episode.title}
+							</a>
+						</h2>
+
+						<!-- Description -->
+						<p class="mt-1 text-base leading-7 text-[var(--text-secondary)]">
+							{episode.description}
+						</p>
+
+						<!-- Action links -->
+						<div class="mt-4 flex items-center gap-4">
+							<a href="{base}/blog/{episode.slug}" class="flex items-center text-sm leading-6 font-bold text-[var(--primary)] hover:text-[var(--primary-hover)] active:text-[var(--primary-hover)]">
+								Read more
+							</a>
+							<span aria-hidden="true" class="text-sm font-bold text-[var(--text-muted)]">/</span>
+							<a href="{base}/blog/{episode.slug}" class="flex items-center text-sm leading-6 font-bold text-[var(--primary)] hover:text-[var(--primary-hover)] active:text-[var(--primary-hover)]" aria-label="Show notes for {episode.title}">
+								Show notes
+							</a>
+						</div>
+					</div>
 				</div>
-
-				<!-- Title as link -->
-				<h2 class="text-lg font-bold text-[var(--text)]">
-					<a
-						href="{base}/blog/{episode.slug}"
-						class="transition-colors hover:text-[var(--primary)]"
-					>
-						{episode.title}
-					</a>
-				</h2>
-
-				<!-- Description -->
-				<p class="mt-2 text-sm text-[var(--text-muted)] line-clamp-3">
-					{episode.description}
-				</p>
-
-				<!-- Read article link -->
-				<div class="mt-3">
-					<a
-						href="{base}/blog/{episode.slug}"
-						class="text-sm font-medium text-[var(--primary)] transition-colors hover:text-[var(--primary-hover)]"
-					>
-						Read article &rarr;
-					</a>
-				</div>
-
-				<!-- Separator (except on last item) -->
-				{#if index < chapters.length - 1}
-					<div class="mt-6 border-b border-[var(--border)]"></div>
-				{/if}
 			</article>
 		{/each}
 	</div>

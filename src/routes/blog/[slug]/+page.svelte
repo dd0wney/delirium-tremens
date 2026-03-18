@@ -21,16 +21,13 @@
 	<meta property="og:type" content="article" />
 </svelte:head>
 
-<article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-36">
-	<ArticleHeader article={data.article} />
+<article class="mx-auto max-w-2xl px-4 sm:px-6">
+	<div class="py-16 lg:py-36 flex flex-col">
+		<ArticleHeader article={data.article} />
 
-	<div class="prose prose-lg mt-14 max-w-none
-		prose-p:text-[var(--text)]
-		prose-li:text-[var(--text)]
-		prose-strong:text-[var(--text)]
-		prose-em:text-[var(--text)]
-		prose-headings:text-[var(--text)]">
-		{@render children()}
+		<div class="prose prose-slate prose-lg max-w-none">
+			{@render children()}
+		</div>
 	</div>
 
 	{#if data.prevArticle || data.nextArticle}

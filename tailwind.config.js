@@ -4,8 +4,11 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts,svx,md}'],
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ['Satoshi', 'ui-sans-serif', 'system-ui', 'sans-serif']
+			},
 			typography: {
-				DEFAULT: {
+				slate: {
 					css: {
 						'--tw-prose-body': 'var(--text)',
 						'--tw-prose-headings': 'var(--prose-headings)',
@@ -18,8 +21,6 @@ export default {
 						'--tw-prose-hr': 'var(--border)',
 						'--tw-prose-th-borders': 'var(--border)',
 						'--tw-prose-td-borders': 'var(--border)',
-
-						// Make sure all text elements use the text color variable
 						'color': 'var(--text)',
 						'p, li, h1, h2, h3, h4, h5, h6': {
 							'color': 'var(--text)',
@@ -40,32 +41,14 @@ export default {
 						},
 						'blockquote': {
 							'border-left-color': 'var(--primary)',
-							'background-color': 'rgba(147, 51, 234, 0.05)',
+							'background-color': 'rgba(236, 72, 153, 0.05)',
 							'padding': '1rem 1.5rem',
 							'border-radius': '0 0.5rem 0.5rem 0',
 							'font-style': 'italic',
 							'color': 'var(--text)'
 						}
 					}
-				},
-				invert: {
-					css: {
-						'--tw-prose-body': 'var(--text)',
-						'--tw-prose-headings': 'var(--prose-headings)',
-						'--tw-prose-links': 'var(--prose-links)',
-						'--tw-prose-bold': 'var(--text)',
-						'--tw-prose-counters': 'var(--text)',
-						'--tw-prose-bullets': 'var(--prose-bullets)',
-						'--tw-prose-quotes': 'var(--text)',
-						'--tw-prose-code': 'var(--text)',
-						'--tw-prose-hr': 'var(--border)',
-						'--tw-prose-th-borders': 'var(--border)',
-						'--tw-prose-td-borders': 'var(--border)',
-					}
 				}
-			},
-			fontFamily: {
-				display: ['Inter var', 'system-ui', 'sans-serif']
 			},
 			colors: {
 				background: 'var(--background)',
