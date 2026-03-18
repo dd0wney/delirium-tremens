@@ -9,7 +9,6 @@
 	import { onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
 	import Home from 'lucide-svelte/icons/home';
-	import BookOpen from 'lucide-svelte/icons/book-open';
 	import Menu from 'lucide-svelte/icons/menu';
 	import X from 'lucide-svelte/icons/x';
 	import Github from 'lucide-svelte/icons/github';
@@ -82,10 +81,7 @@
 			<!-- Navigation -->
 			<nav class="mb-8 flex gap-6 text-sm font-medium">
 				<a href="{base}/" class="transition-colors {isActive(`${base}/`) ? 'text-[var(--primary)]' : 'text-[var(--text-muted)] hover:text-[var(--text)]'}">
-					Home
-				</a>
-				<a href="{base}/blog" class="transition-colors {isActive(`${base}/blog`) ? 'text-[var(--primary)]' : 'text-[var(--text-muted)] hover:text-[var(--text)]'}">
-					Articles
+					Episodes
 				</a>
 			</nav>
 
@@ -172,10 +168,7 @@
 
 			<nav class="space-y-3">
 				<a href="{base}/" class="flex items-center gap-3 text-base font-medium transition-colors {isActive(`${base}/`) ? 'text-[var(--primary)]' : 'text-[var(--text)] hover:text-[var(--primary)]'}">
-					<Home size={18} /> Home
-				</a>
-				<a href="{base}/blog" class="flex items-center gap-3 text-base font-medium transition-colors {isActive(`${base}/blog`) ? 'text-[var(--primary)]' : 'text-[var(--text)] hover:text-[var(--primary)]'}">
-					<BookOpen size={18} /> Articles
+					<Home size={18} /> Episodes
 				</a>
 			</nav>
 
