@@ -10,7 +10,6 @@
 	import type { Snippet } from 'svelte';
 	import Home from 'lucide-svelte/icons/home';
 	import BookOpen from 'lucide-svelte/icons/book-open';
-	import User from 'lucide-svelte/icons/user';
 	import Menu from 'lucide-svelte/icons/menu';
 	import X from 'lucide-svelte/icons/x';
 	import Github from 'lucide-svelte/icons/github';
@@ -87,9 +86,6 @@
 				</a>
 				<a href="{base}/blog" class="transition-colors {isActive(`${base}/blog`) ? 'text-[var(--primary)]' : 'text-[var(--text-muted)] hover:text-[var(--text)]'}">
 					Articles
-				</a>
-				<a href="{base}/about" class="transition-colors {isActive(`${base}/about`) ? 'text-[var(--primary)]' : 'text-[var(--text-muted)] hover:text-[var(--text)]'}">
-					About
 				</a>
 			</nav>
 
@@ -180,9 +176,6 @@
 				</a>
 				<a href="{base}/blog" class="flex items-center gap-3 text-base font-medium transition-colors {isActive(`${base}/blog`) ? 'text-[var(--primary)]' : 'text-[var(--text)] hover:text-[var(--primary)]'}">
 					<BookOpen size={18} /> Articles
-				</a>
-				<a href="{base}/about" class="flex items-center gap-3 text-base font-medium transition-colors {isActive(`${base}/about`) ? 'text-[var(--primary)]' : 'text-[var(--text)] hover:text-[var(--primary)]'}">
-					<User size={18} /> About
 				</a>
 			</nav>
 
