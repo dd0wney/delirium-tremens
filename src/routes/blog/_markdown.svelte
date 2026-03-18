@@ -72,12 +72,6 @@
 	<div class="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:px-0">
 		<!-- Article Header -->
 		<header class="flex flex-col">
-			{#if date}
-				<time datetime={date} class="order-first font-mono text-sm leading-7 text-[var(--text-muted)]">
-					{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-				</time>
-			{/if}
-
 			<div class="flex items-center gap-6">
 				{#if audioUrl && chapterData}
 					<PlayButton
@@ -86,13 +80,22 @@
 						size="lg"
 					/>
 				{/if}
-				<h1 class="mt-2 text-4xl font-bold text-[var(--text)]">
-					{#if episodeNumber != null}<span class="text-[var(--primary)]">{episodeNumber}: </span>{/if}{title}
-				</h1>
+				<div class="flex flex-col">
+					<h1 class="mt-2 text-4xl font-bold text-[var(--text)]">
+						{#if episodeNumber != null}<span class="text-[var(--primary)]">{episodeNumber}: </span>{/if}{title}
+					</h1>
+					{#if date}
+						<time datetime={date} class="order-first font-mono text-sm leading-7 text-[var(--text-muted)]">
+							{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+						</time>
+					{/if}
+				</div>
 			</div>
 
 			{#if description}
-				<p class="mt-3 text-lg leading-8 font-medium text-[var(--text-secondary)]">
+				<p class="mt-3 text-lg leading-8 font-medium text-[var(--text-secondary)]"
+					class:ml-24={audioUrl}
+				>
 					{description}
 				</p>
 			{/if}
