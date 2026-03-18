@@ -1,0 +1,28 @@
+---
+title: Article with Media
+---
+
+<script>
+  import MediaEmbed from '$lib/components/MediaEmbed.svelte';
+</script>
+
+# Article Title
+
+Some text here...
+
+<MediaEmbed 
+  type="video"
+  src="/videos/example.mp4"
+  title="Example Video"
+  poster="/thumbnails/example.jpg"
+  description="A demonstration of the algorithm in action"
+/>
+
+More text here...
+
+<MediaEmbed 
+  type="audio"
+  src="/audio/explanation.mp3"
+  title="Audio Explanation"
+  description="Detailed walkthrough of the solution"
+/> 

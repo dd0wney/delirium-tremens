@@ -7,34 +7,52 @@ export default {
 			typography: {
 				DEFAULT: {
 					css: {
-						'--tw-prose-body': 'theme(colors.slate.700)',
-						'--tw-prose-headings': 'theme(colors.slate.900)',
-						'--tw-prose-links': 'theme(colors.sky.500)',
-						'--tw-prose-links-hover': 'theme(colors.sky.600)',
-						'--tw-prose-code': 'theme(colors.slate.900)',
-						'--tw-prose-pre-code': 'theme(colors.slate.200)',
-						'--tw-prose-pre-bg': 'theme(colors.slate.800)',
-						'--tw-prose-quotes': 'theme(colors.slate.900)',
-						'--tw-prose-counters': 'theme(colors.slate.900)',
-						'--tw-prose-bullets': 'theme(colors.slate.900)',
-						'--tw-prose-hr': 'theme(colors.slate.200)',
-						'--tw-prose-th-borders': 'theme(colors.slate.300)',
-						'--tw-prose-td-borders': 'theme(colors.slate.200)',
+						'--tw-prose-body': 'var(--text)',
+						'--tw-prose-headings': 'var(--prose-headings)',
+						'--tw-prose-links': 'var(--prose-links)',
+						'--tw-prose-bold': 'var(--text)',
+						'--tw-prose-counters': 'var(--text)',
+						'--tw-prose-bullets': 'var(--prose-bullets)',
+						'--tw-prose-quotes': 'var(--text)',
+						'--tw-prose-code': 'var(--text)',
+						'--tw-prose-hr': 'var(--border)',
+						'--tw-prose-th-borders': 'var(--border)',
+						'--tw-prose-td-borders': 'var(--border)',
 
-						// Dark mode
-						'--tw-prose-invert-body': 'theme(colors.slate.300)',
-						'--tw-prose-invert-headings': 'theme(colors.white)',
-						'--tw-prose-invert-links': 'theme(colors.sky.400)',
-						'--tw-prose-invert-links-hover': 'theme(colors.sky.400)',
-						'--tw-prose-invert-code': 'theme(colors.white)',
-						'--tw-prose-invert-pre-code': 'theme(colors.slate.200)',
-						'--tw-prose-invert-pre-bg': 'theme(colors.slate.800)',
-						'--tw-prose-invert-quotes': 'theme(colors.slate.100)',
-						'--tw-prose-invert-counters': 'theme(colors.slate.100)',
-						'--tw-prose-invert-bullets': 'theme(colors.slate.100)',
-						'--tw-prose-invert-hr': 'theme(colors.slate.700)',
-						'--tw-prose-invert-th-borders': 'theme(colors.slate.700)',
-						'--tw-prose-invert-td-borders': 'theme(colors.slate.800)'
+						// Make sure all text elements use the text color variable
+						'color': 'var(--text)',
+						'p, li, h1, h2, h3, h4, h5, h6': {
+							'color': 'var(--text)',
+							'font-weight': '400'
+						},
+						'strong, b': {
+							'color': 'var(--text)',
+							'font-weight': '600'
+						},
+						'code': {
+							'color': 'var(--text)'
+						},
+						'a': {
+							'color': 'var(--prose-links)',
+							'&:hover': {
+								'color': 'var(--primary-hover)'
+							}
+						}
+					}
+				},
+				invert: {
+					css: {
+						'--tw-prose-body': 'var(--text)',
+						'--tw-prose-headings': 'var(--prose-headings)',
+						'--tw-prose-links': 'var(--prose-links)',
+						'--tw-prose-bold': 'var(--text)',
+						'--tw-prose-counters': 'var(--text)',
+						'--tw-prose-bullets': 'var(--prose-bullets)',
+						'--tw-prose-quotes': 'var(--text)',
+						'--tw-prose-code': 'var(--text)',
+						'--tw-prose-hr': 'var(--border)',
+						'--tw-prose-th-borders': 'var(--border)',
+						'--tw-prose-td-borders': 'var(--border)',
 					}
 				}
 			},

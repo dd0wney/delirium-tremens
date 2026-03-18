@@ -13,6 +13,7 @@ html {
   --text: #FFFFFF;
   --text-muted: #9CA3AF;
   --text-secondary: #374151;
+  --text-with-opacity: rgba(248, 250, 252, 0.8);
   --border: rgba(147, 51, 234, 0.2);
   --prose-text: #FFFFFF;
   --prose-headings: #9333EA;
@@ -30,6 +31,7 @@ html {
   --text: #000000;        /* Pure black for maximum contrast */
   --text-muted: #1F2937;   /* Very dark gray for muted text */
   --text-secondary: #374151; /* Dark gray for secondary text */
+  --text-with-opacity: rgba(0, 0, 0, 0.8);
   --border: rgba(147, 51, 234, 0.15);  /* Softer borders */
   --prose-text: #000000;   /* Pure black for maximum readability */
   --prose-headings: #9333EA;
@@ -43,15 +45,16 @@ html {
 
 :root.dark {
   --background: #1C1C1C;
-  --primary: #FF1493;      /* Keep the neon pink for dark mode */
-  --primary-hover: #FF69B4;
-  --text: #FFFFFF;
-  --text-muted: #9CA3AF;
+  --primary: #FF1493;      /* Lighter pink for better readability */
+  --primary-hover: #FF69B4; /* Even lighter pink for hover */
+  --text: #F8FAFC;
+  --text-muted: #E2E8F0;
   --text-secondary: #9CA3AF;
-  --border: rgba(255, 20, 147, 0.2);
-  --prose-text: #FFFFFF;
-  --prose-headings: #FF1493;
-  --prose-links: #FF1493;
+  --text-with-opacity: rgba(248, 250, 252, 0.8);
+  --border: rgba(255, 105, 180, 0.2);
+  --prose-text: #F8FAFC;
+  --prose-headings: #FF69B4;
+  --prose-links: #FF69B4;
   --prose-bullets: #FF1493;
 }
 

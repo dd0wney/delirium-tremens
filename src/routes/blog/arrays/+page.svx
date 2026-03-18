@@ -1,0 +1,63 @@
+---
+title: Array Techniques
+chapter: 3
+category: Data Structures
+---
+
+# Array Techniques
+
+Essential array manipulation techniques including two-pointer method and sliding window.
+
+## Two Pointer Technique
+
+The two-pointer technique is a pattern where two pointers iterate through the data structure in tandem or in opposite directions.
+
+```typescript
+function twoSum(nums: number[], target: number): [number, number] {
+    let left = 0;
+    let right = nums.length - 1;
+    
+    while (left < right) {
+        const sum = nums[left] + nums[right];
+        if (sum === target) {
+            return [left, right];
+        }
+        if (sum < target) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+    throw new Error("No solution found");
+}
+```
+
+## Sliding Window
+
+The sliding window pattern is used to perform operations on a specific window size of an array.
+
+```typescript
+function maxSubarraySum(nums: number[], k: number): number {
+    let maxSum = 0;
+    let windowSum = 0;
+    
+    // First window
+    for (let i = 0; i < k; i++) {
+        windowSum += nums[i];
+    }
+    maxSum = windowSum;
+    
+    // Slide window
+    for (let i = k; i < nums.length; i++) {
+        windowSum = windowSum - nums[i - k] + nums[i];
+        maxSum = Math.max(maxSum, windowSum);
+    }
+    
+    return maxSum;
+}
+```
+
+## References
+
+1. McDowell, G. L. (2019). Cracking the Coding Interview (6th ed.). CareerCup.
+2. Bhargava, A. Y. (2016). Grokking Algorithms. Manning Publications. 

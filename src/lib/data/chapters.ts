@@ -1,144 +1,212 @@
-export const chapters = [
+import type { Chapter } from '$lib/types';
+
+export const chapters: Chapter[] = [
 	{
-		title: 'About the Authors',
-		slug: 'authors',
-		chapter: 0,
-		sections: [
-			{ title: 'Contributors', id: 'contributors' },
-			{ title: 'Acknowledgments', id: 'acknowledgments' }
-		]
-	},
-	{
-		title: 'Building a Unified Defence',
-		slug: '01-introduction',
+		title: 'Getting Started with Algorithms',
+		slug: 'introduction',
 		chapter: 1,
+		description: 'A comprehensive guide to approaching algorithmic problems and mastering technical interviews.',
+		date: '2024-03-20',
+		category: 'Introduction',
+		tags: ['fundamentals', 'problem-solving', 'interviews', 'getting-started'],
 		sections: [
-			{ title: 'Overview of IT and OT Roles in Industrial Environments', id: 'overview-it-ot' },
-			{ title: 'The Need for IT/OT Convergence in Modern Industry', id: 'it-ot-convergence' },
-			{ title: 'Introduction to the O/IT Mental Model', id: 'oit-mental-model' },
-			{ title: 'Exploration of Core Frameworks', id: 'core-frameworks' },
-			{ title: 'Protecting the Realm', id: 'protecting-realm' },
-			{ title: 'Challenges and Solutions in IT/OT Integration', id: 'challenges-solutions' },
-			{ title: 'Conclusion: The Path Forward', id: 'path-forward' }
+			{ title: 'How to Use This Guide', id: 'how-to-use' },
+			{ title: 'Problem-Solving Framework', id: 'framework' }
 		]
 	},
 	{
-		title: 'The Gold Trader and the Water Mill',
-		slug: '02-gold-trader',
+		title: 'Bit Manipulation Fundamentals',
+		slug: 'primitive-types',
 		chapter: 2,
+		description: 'Master the art of bit manipulation with practical examples from real interviews.',
+		date: '2024-03-21',
+		category: 'Algorithms',
+		tags: ['bit-manipulation', 'binary', 'optimization', 'fundamentals'],
 		sections: [
-			{ title: 'The Gold Trader\'s Supply Chain', id: 'gold-trader-supply-chain' },
-			{ title: 'The Water Mill\'s Essential Role in the Supply Chain', id: 'water-mill-supply-chain' },
-			{ title: 'The Kingdom\'s Priorities', id: 'kingdoms-priorities' }
+			{ title: 'Counting Bits', id: 'counting-bits' },
+			{ title: 'Power of Two', id: 'power-of-two' }
 		]
 	},
 	{
-		title: 'Siege Engines at the Gates',
-		slug: '03-siege-engines',
+		title: 'Array Techniques',
+		slug: 'arrays',
 		chapter: 3,
+		description: 'Essential array manipulation techniques including two-pointer method and sliding window.',
+		date: '2024-03-22',
+		category: 'Data Structures',
+		tags: ['arrays', 'two-pointer', 'sliding-window', 'optimization'],
 		sections: [
-			{ title: 'Understanding Threats', id: 'understanding-threats' },
-			{ title: 'Threat Assessment', id: 'threat-assessment' },
-			{ title: 'Detailed Cyberattack Strategies', id: 'cyberattack-strategies' },
-			{ title: 'Cyberattack Strategy 1: IT Compromise', id: 'cyberattack-strategy-1' },
-			{ title: 'Cyberattack Strategy 2: OT Compromise', id: 'cyberattack-strategy-2' },
-			{ title: 'Cyberattack Strategy 3: OT Compromise via IT', id: 'cyberattack-strategy-3' },
-			{ title: 'Cyberattack Strategy 4: IT Compromise via OT', id: 'cyberattack-strategy-4' }
+			{ title: 'Two Pointer Technique', id: 'two-pointer' },
+			{ title: 'Sliding Window', id: 'sliding-window' }
 		]
 	},
 	{
-		title: 'The Fortress Architect',
-		slug: '04-fortress-architect',
+		title: 'String Pattern Matching',
+		slug: 'strings',
 		chapter: 4,
-		sections: []
+		description: 'Deep dive into string algorithms including KMP and Rabin-Karp.',
+		date: '2024-03-23',
+		category: 'Algorithms',
+		tags: ['strings', 'pattern-matching', 'kmp', 'rabin-karp'],
+		sections: [
+			{ title: 'KMP Algorithm', id: 'kmp' },
+			{ title: 'Rabin-Karp', id: 'rabin-karp' }
+		]
 	},
 	{
-		title: 'Guarding the Weak Points',
-		slug: '05-weak-points',
+		title: 'Linked List Operations',
+		slug: 'linked-lists',
 		chapter: 5,
-		sections: []
+		description: 'Master linked list operations with practical examples and common interview questions.',
+		date: '2024-03-24',
+		category: 'Data Structures',
+		tags: ['linked-lists', 'pointers', 'cycle-detection', 'reversal'],
+		sections: [
+			{ title: 'Cycle Detection', id: 'cycle-detection' },
+			{ title: 'Reverse Operations', id: 'reverse' }
+		]
 	},
 	{
-		title: 'The Inner Keep',
-		slug: '06-inner-keep',
+		title: 'System Design: URL Shortener',
+		slug: 'system-design-1',
 		chapter: 6,
-		sections: []
+		description: 'Build a scalable URL shortener service from scratch.',
+		date: '2024-03-25',
+		category: 'System Design',
+		tags: ['system-design', 'architecture', 'scalability', 'databases'],
+		sections: [
+			{ title: 'Requirements Analysis', id: 'requirements' },
+			{ title: 'Architecture Design', id: 'architecture' },
+			{ title: 'Data Model', id: 'data-model' }
+		]
 	},
 	{
-		title: 'The Moat and Drawbridge',
-		slug: '07-moat-drawbridge',
+		title: 'Security: Buffer Overflow',
+		slug: 'security-1',
 		chapter: 7,
-		sections: []
+		description: 'Understanding and preventing buffer overflow vulnerabilities.',
+		date: '2024-03-26',
+		category: 'Security',
+		tags: ['security', 'buffer-overflow', 'vulnerabilities', 'prevention'],
+		sections: [
+			{ title: 'Stack Overflow', id: 'stack-overflow' },
+			{ title: 'Prevention Techniques', id: 'prevention' }
+		]
 	},
 	{
-		title: 'The Reconnaissance Mission',
-		slug: '08-reconnaissance',
+		title: 'Dynamic Programming: Edit Distance',
+		slug: 'dp-1',
 		chapter: 8,
+		description: 'Solving the edit distance problem using dynamic programming.',
+		date: '2024-03-27',
+		category: 'Algorithms',
+		tags: ['dynamic-programming', 'edit-distance', 'optimization'],
+		sections: [
+			{ title: 'Problem Analysis', id: 'analysis' },
+			{ title: 'Bottom-Up Solution', id: 'bottom-up' },
+			{ title: 'Space Optimization', id: 'optimization' }
+		]
+	},
+	{
+		title: 'Trees',
+		slug: 'chapter-6',
+		chapter: 9,
+		description: 'Traversal, balancing, and common tree problems.',
+		date: '2024-03-28',
+		category: 'Data Structures',
+		tags: ['data-structures', 'trees', 'recursion'],
 		sections: []
 	},
 	{
-		title: 'Simulated Sieges',
-		slug: '09-simulated-sieges',
-		chapter: 9
-	},
-	{
-		title: 'Reinforcing the Walls',
-		slug: '10-reinforcing-walls',
+		title: 'Binary Search Trees',
+		slug: 'chapter-7',
 		chapter: 10,
+		description: 'BST operations, balancing, and search algorithms.',
+		date: '2024-03-29',
+		category: 'Data Structures',
+		tags: ['data-structures', 'trees', 'binary-search'],
 		sections: []
 	},
 	{
-		title: 'The Gatekeeper\'s Watch',
-		slug: '11-gatekeepers-watch',
+		title: 'Heaps',
+		slug: 'chapter-8',
 		chapter: 11,
+		description: 'Priority queues, heap operations, and applications.',
+		date: '2024-03-30',
+		category: 'Data Structures',
+		tags: ['data-structures', 'heaps', 'priority-queues'],
 		sections: []
 	},
 	{
-		title: 'Guarding the Granary',
-		slug: '12-guarding-granary',
+		title: 'Graphs',
+		slug: 'chapter-9',
 		chapter: 12,
+		description: 'Graph traversal, shortest paths, and connectivity.',
+		date: '2024-03-31',
+		category: 'Data Structures',
+		tags: ['data-structures', 'graphs', 'traversal'],
 		sections: []
 	},
 	{
-		title: 'The Watchtower Alert',
-		slug: '13-watchtower-alert',
+		title: 'Dynamic Programming',
+		slug: 'chapter-10',
 		chapter: 13,
+		description: 'Memoization, tabulation, and common DP patterns.',
+		date: '2024-04-01',
+		category: 'Algorithms',
+		tags: ['dynamic-programming', 'optimization', 'algorithms'],
 		sections: []
 	},
 	{
-		title: 'The Armorer\'s Duty',
-		slug: '14-armorers-duty',
+		title: 'Recursion',
+		slug: 'chapter-11',
 		chapter: 14,
+		description: 'Recursive problem solving and backtracking.',
+		date: '2024-04-02',
+		category: 'Algorithms',
+		tags: ['recursion', 'backtracking', 'algorithms'],
 		sections: []
 	},
 	{
-		title: 'The Architect\'s Blueprint',
-		slug: '15-architects-blueprint',
+		title: 'Sorting and Searching',
+		slug: 'chapter-12',
 		chapter: 15,
+		description: 'Comparison sorts, non-comparison sorts, and search algorithms.',
+		date: '2024-04-03',
+		category: 'Algorithms',
+		tags: ['sorting', 'searching', 'algorithms'],
 		sections: []
 	},
 	{
-		title: 'Training the Garrison',
-		slug: '16-training-garrison',
+		title: 'Object-Oriented Programming',
+		slug: 'chapter-13',
 		chapter: 16,
+		description: 'Design patterns and OOP principles in practice.',
+		date: '2024-04-04',
+		category: 'Software Design',
+		tags: ['oop', 'design-patterns', 'software-design'],
 		sections: []
 	},
 	{
-		title: 'The New Age of Warfare',
-		slug: '17-new-age',
+		title: 'System Design and Memory Limits',
+		slug: 'chapter-14',
 		chapter: 17,
+		description: 'Designing systems with real-world constraints.',
+		date: '2024-04-05',
+		category: 'System Design',
+		tags: ['system-design', 'memory', 'scalability'],
 		sections: []
 	},
-	{
-		title: 'Fortifying for the Future',
-		slug: '18-fortifying-future',
-		chapter: 18,
-		sections: []
-	},
+	
+
 	{
 		title: 'Bibliography',
 		slug: 'references',
-		chapter: 19,
-		sections: []
+		chapter: 18,
+		description: 'References and resources for further reading.',
+		date: '2024-04-06',
+		category: 'Reference',
+		sections: [],
+		tags: ['references', 'resources']
 	}
 ]; 

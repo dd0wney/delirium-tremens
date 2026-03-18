@@ -1,0 +1,51 @@
+---
+title: Getting Started with Algorithms
+chapter: 1
+category: Introduction
+---
+
+# Getting Started with Algorithms
+
+A comprehensive guide to approaching algorithmic problems and mastering technical interviews.
+
+## How to Use This Guide
+
+This guide is structured to provide both theoretical understanding and practical application:
+
+1. Read through the concept explanations
+2. Study the code examples
+3. Practice with similar problems
+4. Review the solutions and patterns
+
+## Problem-Solving Framework
+
+When approaching any algorithmic problem:
+
+1. **Understand the Problem**
+   - Read carefully
+   - Identify inputs/outputs
+   - Note constraints
+   - Ask clarifying questions
+
+2. **Plan Your Approach**
+   - Break into subproblems
+   - Consider multiple solutions
+   - Think about edge cases
+   - Choose optimal approach
+
+3. **Implement Solution**
+   - Write clean code
+   - Use meaningful names
+   - Handle edge cases
+   - Add comments where needed
+
+4. **Test Your Solution**
+   - Start with example cases
+   - Test edge cases
+   - Analyze complexity
+   - Consider optimizations
+
+## References
+
+1. McDowell, G. L. (2019). Cracking the Coding Interview (6th ed.). CareerCup.
+2. Bhargava, A. Y. (2016). Grokking Algorithms. Manning Publications. 

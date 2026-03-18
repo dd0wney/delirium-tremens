@@ -1,0 +1,64 @@
+---
+title: Linked List Operations
+chapter: 5
+category: Data Structures
+---
+
+# Linked List Operations
+
+Master linked list operations with practical examples and common interview questions.
+
+## Cycle Detection
+
+Floyd's cycle detection algorithm (also known as the "tortoise and hare" algorithm).
+
+```typescript
+class ListNode {
+    val: number;
+    next: ListNode | null;
+    constructor(val: number) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+function hasCycle(head: ListNode | null): boolean {
+    if (!head || !head.next) return false;
+    
+    let slow = head;
+    let fast = head;
+    
+    while (fast.next && fast.next.next) {
+        slow = slow.next!;
+        fast = fast.next.next;
+        if (slow === fast) return true;
+    }
+    
+    return false;
+}
+```
+
+## Reverse Operations
+
+Common operations like reversing a linked list.
+
+```typescript
+function reverseList(head: ListNode | null): ListNode | null {
+    let prev: ListNode | null = null;
+    let current = head;
+    
+    while (current) {
+        const next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next;
+    }
+    
+    return prev;
+}
+```
+
+## References
+
+1. McDowell, G. L. (2019). Cracking the Coding Interview (6th ed.). CareerCup.
+2. Bhargava, A. Y. (2016). Grokking Algorithms. Manning Publications. 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { base } from '$app/paths';
 	import type { Chapter } from '$lib/types';
+	import { getChapterUrl } from '$lib/utils/navigation';
 
 	export let prevChapter: Chapter | null;
 	export let nextChapter: Chapter | null;
@@ -11,13 +11,13 @@
 			if (event.key === 'ArrowLeft' && prevChapter) {
 				event.preventDefault();
 				window.scrollTo(0, 0);
-				goto(`${base}/book/${prevChapter.slug}/`).catch((error) => {
+				goto(getChapterUrl(prevChapter)).catch((error) => {
 					console.error('Navigation failed:', error);
 				});
 			} else if (event.key === 'ArrowRight' && nextChapter) {
 				event.preventDefault();
 				window.scrollTo(0, 0);
-				goto(`${base}/book/${nextChapter.slug}/`).catch((error) => {
+				goto(getChapterUrl(nextChapter)).catch((error) => {
 					console.error('Navigation failed:', error);
 				});
 			}

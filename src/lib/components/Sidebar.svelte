@@ -2,7 +2,7 @@
 	import { base } from '$app/paths';
 	import TableOfContents from './TableOfContents.svelte';
 	import type { Chapter } from '$lib/types';
-	
+
 	export let isSidebarOpen: boolean;
 	export let onCloseSidebar: () => void;
 	export let chapters: Chapter[];
@@ -14,7 +14,7 @@
 		tabindex="0"
 		class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
 		on:click={onCloseSidebar}
-		on:keydown={(e) => {
+		on:keydown={(e: KeyboardEvent) => {
 			if (e.key === 'Escape') {
 				onCloseSidebar();
 			}
@@ -27,14 +27,14 @@
 		? 'translate-x-0'
 		: '-translate-x-full'}"
 >
-	<TableOfContents {chapters} />
+	<TableOfContents chapterList={chapters} />
 </aside>
 
-<aside 
-	class="hidden w-64 shrink-0 border-r border-[var(--primary)]/20 lg:block"
+<aside
+	class="border-[var(--primary)]/20 hidden w-64 shrink-0 border-r lg:block"
 	aria-label="Table of contents"
 >
 	<div class="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto p-4">
-		<TableOfContents {chapters} />
+		<TableOfContents chapterList={chapters} />
 	</div>
-</aside> 
+</aside>

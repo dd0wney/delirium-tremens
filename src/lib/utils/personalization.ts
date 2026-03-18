@@ -4,6 +4,6 @@ interface UserPreferences {
   learningStyle: 'visual' | 'practical' | 'theoretical';
 }
 
-export function adaptContent(content: string, preferences: UserPreferences): string {
-  // Content adaptation logic
+export function adaptContent(content: string, _preferences: UserPreferences): string {
+  return content;
 } 

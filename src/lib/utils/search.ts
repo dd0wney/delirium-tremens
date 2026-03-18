@@ -1,19 +1,13 @@
-import Fuse from 'fuse.js';
 import type { Chapter } from '$lib/types';
 
 interface SearchResult {
   chapter: Chapter;
-  matches: Array<{
-    key: string;
-    value: string;
-    indices: number[][];
-  }>;
+  score: number;
 }
 
-export function createSearchIndex(chapters: Chapter[]) {
-  return new Fuse(chapters, {
-    keys: ['title', 'content'], // Would need to add content to Chapter type
-    threshold: 0.3,
-    includeMatches: true
-  });
-} 
+export function searchChapters(chapters: Chapter[], query: string): SearchResult[] {
+  const lowerQuery = query.toLowerCase();
+  return chapters
+    .filter((c) => c.title.toLowerCase().includes(lowerQuery) || c.description.toLowerCase().includes(lowerQuery))
+    .map((chapter) => ({ chapter, score: 1 }));
+}

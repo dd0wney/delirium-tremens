@@ -1,0 +1,86 @@
+---
+title: String Pattern Matching
+chapter: 4
+category: Algorithms
+---
+
+# String Pattern Matching
+
+Deep dive into string algorithms including KMP and Rabin-Karp.
+
+## KMP Algorithm
+
+The Knuth-Morris-Pratt algorithm efficiently finds occurrences of a pattern within a text.
+
+```typescript
+function computeLPS(pattern: string): number[] {
+    const lps = new Array(pattern.length).fill(0);
+    let len = 0;
+    let i = 1;
+    
+    while (i < pattern.length) {
+        if (pattern[i] === pattern[len]) {
+            len++;
+            lps[i] = len;
+            i++;
+        } else {
+            if (len !== 0) {
+                len = lps[len - 1];
+            } else {
+                lps[i] = 0;
+                i++;
+            }
+        }
+    }
+    return lps;
+}
+```
+
+## Rabin-Karp
+
+The Rabin-Karp algorithm uses hashing to find patterns in strings.
+
+```typescript
+function rabinKarp(text: string, pattern: string): number {
+    const prime = 101;
+    const d = 256;
+    const m = pattern.length;
+    const n = text.length;
+    let p = 0; // hash value for pattern
+    let t = 0; // hash value for text
+    let h = 1;
+    
+    // Calculate h = pow(d, M-1) % prime
+    for (let i = 0; i < m - 1; i++) {
+        h = (h * d) % prime;
+    }
+    
+    // Calculate initial hash values
+    for (let i = 0; i < m; i++) {
+        p = (d * p + pattern.charCodeAt(i)) % prime;
+        t = (d * t + text.charCodeAt(i)) % prime;
+    }
+    
+    // Find pattern
+    for (let i = 0; i <= n - m; i++) {
+        if (p === t) {
+            let j;
+            for (j = 0; j < m; j++) {
+                if (text[i + j] !== pattern[j]) break;
+            }
+            if (j === m) return i;
+        }
+        
+        if (i < n - m) {
+            t = (d * (t - text.charCodeAt(i) * h) + text.charCodeAt(i + m)) % prime;
+            if (t < 0) t += prime;
+        }
+    }
+    return -1;
+}
+```
+
+## References
+
+1. McDowell, G. L. (2019). Cracking the Coding Interview (6th ed.). CareerCup.
+2. Cormen, T. H., et al. (2009). Introduction to Algorithms (3rd ed.). MIT Press. 

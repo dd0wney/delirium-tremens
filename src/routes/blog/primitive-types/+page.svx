@@ -1,0 +1,39 @@
+---
+title: Bit Manipulation Fundamentals
+chapter: 2
+category: Algorithms
+---
+
+# Bit Manipulation Fundamentals
+
+Master the art of bit manipulation with practical examples from real interviews.
+
+## Counting Bits
+
+Understanding how to count and manipulate bits is fundamental to solving many low-level programming problems.
+
+```typescript
+function countBits(n: number): number {
+    let count = 0;
+    while (n) {
+        count += n & 1;
+        n >>>= 1;
+    }
+    return count;
+}
+```
+
+## Power of Two
+
+Determining if a number is a power of two is a classic bit manipulation problem.
+
+```typescript
+function isPowerOfTwo(n: number): boolean {
+    return n > 0 && (n & (n - 1)) === 0;
+}
+```
+
+## References
+
+1. McDowell, G. L. (2019). Cracking the Coding Interview (6th ed.). CareerCup.
+2. Bhargava, A. Y. (2016). Grokking Algorithms. Manning Publications. 

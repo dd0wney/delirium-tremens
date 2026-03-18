@@ -3,19 +3,12 @@ export interface Section {
   id: string;
 }
 
-export interface Chapter {
-  title: string;
-  slug: string;
-  chapter: number;
-  sections?: Section[];
-  references?: string[];
-}
-
 export interface PageMetadata {
   title: string;
   chapter: number;
-  sections: Section[];
-  references: string[];
+  category: string;
+  date?: string;
+  references?: string[];
 }
 
 export interface Reference {
@@ -26,4 +19,24 @@ export interface Reference {
   source: string;
   url?: string;
   doi?: string;
+}
+
+export interface Article {
+  title: string;
+  slug: string;
+  description: string;
+  date: string;
+  category: string;
+  tags: string[];
+  readingTime?: string;
+  featured?: boolean;
+  audioUrl?: string;
+  showNotes?: string;
+  episodeNumber?: number;
+}
+
+export interface Chapter extends Article {
+  chapter: number;
+  sections?: { title: string; id: string }[];
+  references?: string[];
 } 

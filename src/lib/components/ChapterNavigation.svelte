@@ -2,10 +2,7 @@
 	import { base } from '$app/paths';
 	import type { Chapter } from '$lib/types';
 	import KeyboardNavigation from './KeyboardNavigation.svelte';
-
-	function getChapterUrl(chapter: Chapter): string {
-		return `${base}/book/${chapter.slug}/`;
-	}
+	import { getChapterUrl } from '$lib/utils/navigation';
 
 	export let chapters: Chapter[];
 	export let currentSlug: string | undefined = '';
@@ -43,7 +40,7 @@
 		{#if nextChapter}
 			<a
 				href={getChapterUrl(nextChapter)}
-				class="text-white no-underline hover:text-[#FF1493]"
+				class="text-[var(--text)] no-underline hover:text-[var(--primary)]"
 				on:click={handleNavigate}
 				aria-label="Next chapter: {nextChapter.title}"
 			>
