@@ -4,10 +4,6 @@ chapter: 4
 category: Algorithms
 ---
 
-# String Pattern Matching
-
-Deep dive into string algorithms including KMP and Rabin-Karp.
-
 ## KMP Algorithm
 
 The Knuth-Morris-Pratt algorithm efficiently finds occurrences of a pattern within a text.

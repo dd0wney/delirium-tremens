@@ -4,10 +4,6 @@ chapter: 3
 category: Data Structures
 ---
 
-# Array Techniques
-
-Essential array manipulation techniques including two-pointer method and sliding window.
-
 ## Two Pointer Technique
 
 The two-pointer technique is a pattern where two pointers iterate through the data structure in tandem or in opposite directions.

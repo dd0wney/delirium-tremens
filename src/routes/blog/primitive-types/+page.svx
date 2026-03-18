@@ -4,10 +4,6 @@ chapter: 2
 category: Algorithms
 ---
 
-# Bit Manipulation Fundamentals
-
-Master the art of bit manipulation with practical examples from real interviews.
-
 ## Counting Bits
 
 Understanding how to count and manipulate bits is fundamental to solving many low-level programming problems.

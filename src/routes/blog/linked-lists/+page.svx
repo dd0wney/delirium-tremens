@@ -4,10 +4,6 @@ chapter: 5
 category: Data Structures
 ---
 
-# Linked List Operations
-
-Master linked list operations with practical examples and common interview questions.
-
 ## Cycle Detection
 
 Floyd's cycle detection algorithm (also known as the "tortoise and hare" algorithm).

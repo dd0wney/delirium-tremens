@@ -4,10 +4,6 @@ chapter: 1
 category: Introduction
 ---
 
-# Getting Started with Algorithms
-
-A comprehensive guide to approaching algorithmic problems and mastering technical interviews.
-
 ## How to Use This Guide
 
 This guide is structured to provide both theoretical understanding and practical application:
