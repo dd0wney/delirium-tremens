@@ -11,7 +11,6 @@
 		description: chapter.description || `Deep dive into ${chapter.title.toLowerCase()} with practical examples and interview-focused solutions.`,
 		slug: chapter.slug,
 		date: chapter.date || "2024-03-20",
-		readingTime: "10 min read",
 		category: chapter.category || "Uncategorized",
 		tags: chapter.tags || [],
 		featured: chapter.chapter === 1

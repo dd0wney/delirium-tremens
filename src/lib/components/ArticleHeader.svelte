@@ -17,9 +17,15 @@
 	</div>
 
 	<div class="flex flex-col">
-		<time datetime={article.date} class="order-first text-sm text-[var(--text-muted)]">
-			{new Date(article.date).toLocaleDateString()}
-		</time>
+		<div class="order-first flex items-center gap-3 text-sm text-[var(--text-muted)]">
+			<time datetime={article.date}>
+				{new Date(article.date).toLocaleDateString()}
+			</time>
+			{#if article.readingTime}
+				<span aria-hidden="true">&middot;</span>
+				<span>{article.readingTime}</span>
+			{/if}
+		</div>
 
 		<h1 class="mt-6 text-4xl font-bold text-[var(--primary)] sm:text-5xl">
 			{article.title}

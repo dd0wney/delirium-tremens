@@ -46,7 +46,9 @@
 		<div class="border-[var(--primary)]/10 mt-6 flex border-t pt-6">
 			<div class="relative flex items-center gap-x-4">
 				<div class="text-sm">
-					<p class="font-semibold text-[var(--text)]">{article.readingTime}</p>
+					{#if article.readingTime}
+						<p class="font-semibold text-[var(--text)]">{article.readingTime}</p>
+					{/if}
 					<p class="text-[var(--text-muted)]">{article.category}</p>
 				</div>
 			</div>
