@@ -12,6 +12,14 @@
 	let chapter = $derived(isChapter(data.article) ? data.article : null);
 </script>
 
+<svelte:head>
+	<title>{data.article.title} — Delirium Tremens</title>
+	<meta name="description" content={data.article.description} />
+	<meta property="og:title" content="{data.article.title} — Delirium Tremens" />
+	<meta property="og:description" content={data.article.description} />
+	<meta property="og:type" content="article" />
+</svelte:head>
+
 <article class="py-16 lg:py-36">
 	<ArticleHeader article={data.article} />
 

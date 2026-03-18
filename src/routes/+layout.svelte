@@ -14,6 +14,14 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Delirium Tremens</title>
+	<meta name="description" content="Deep dives into algorithms, data structures, system design, and security." />
+	<meta property="og:title" content="Delirium Tremens" />
+	<meta property="og:description" content="Deep dives into algorithms, data structures, system design, and security." />
+	<meta property="og:type" content="website" />
+</svelte:head>
+
 <div class="min-h-screen bg-[var(--background)] pb-24">
 	<Header />
 

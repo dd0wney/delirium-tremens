@@ -43,6 +43,14 @@
 	const regularArticles = articles.filter(a => !a.featured);
 </script>
 
+<svelte:head>
+	<title>Articles — Delirium Tremens</title>
+	<meta name="description" content="Browse all articles on algorithms, data structures, system design, and security." />
+	<meta property="og:title" content="Articles — Delirium Tremens" />
+	<meta property="og:description" content="Browse all articles on algorithms, data structures, system design, and security." />
+	<meta property="og:type" content="website" />
+</svelte:head>
+
 <div class="relative min-h-screen bg-[var(--background)]">
 	<!-- Hero Section -->
 	<div class="relative isolate overflow-hidden">
@@ -50,10 +58,10 @@
 			<div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
 				<div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
 					<h1 class="text-4xl font-bold tracking-tight text-[var(--primary)] sm:text-6xl">
-						Algorithm Guide
+						Articles
 					</h1>
 					<p class="relative mt-6 text-lg leading-8 text-[var(--text)]/80 sm:max-w-md lg:max-w-none">
-						A comprehensive guide to algorithms, data structures, and system design through practical examples and interview problems.
+						Algorithms, data structures, system design, and security through practical examples and interview-focused solutions.
 					</p>
 				</div>
 			</div>
