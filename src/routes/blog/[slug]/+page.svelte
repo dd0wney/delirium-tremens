@@ -27,9 +27,7 @@
 	<div class="py-16 lg:py-36 flex flex-col">
 		<ArticleHeader article={data.article} />
 
-		<div class="prose prose-slate prose-lg max-w-none">
-			{@render children()}
-		</div>
+		{@render children()}
 	</div>
 
 	{#if data.prevArticle || data.nextArticle}
