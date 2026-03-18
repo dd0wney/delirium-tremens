@@ -53,11 +53,9 @@
 	<header class="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-[28rem] lg:overflow-y-auto lg:border-x lg:border-[var(--border)] lg:bg-[var(--sidebar-bg)]">
 		<div class="relative z-10 mx-auto px-8 py-12 w-full flex flex-col min-h-full">
 			<!-- Poster placeholder -->
-			<a href="{base}/" class="relative block w-full overflow-hidden rounded-lg bg-gradient-to-br from-slate-200 to-slate-300 shadow-lg mb-10" aria-label="Homepage">
-				<div class="aspect-square flex items-center justify-center">
-					<div class="text-6xl font-bold text-slate-700">DT</div>
-				</div>
-				<div class="absolute inset-0 rounded-lg ring-1 ring-black/10 ring-inset"></div>
+			<a href="{base}/" class="relative mb-10 block w-full overflow-hidden rounded-2xl shadow-xl shadow-black/30" aria-label="Homepage">
+				<img src="{base}/poster.png" alt="Delirium Tremens" class="aspect-square w-full object-cover" />
+				<div class="absolute inset-0 rounded-2xl ring-1 ring-white/10 ring-inset"></div>
 			</a>
 
 			<!-- Title & Description -->
@@ -118,8 +116,8 @@
 	>
 		<div class="space-y-8 p-6">
 			<div class="text-center">
-				<div class="mx-auto mb-4 w-20 h-20 rounded-lg bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
-					<span class="text-3xl font-bold text-slate-700">DT</span>
+				<div class="mx-auto mb-4 w-24 overflow-hidden rounded-xl shadow-lg shadow-black/20">
+					<img src="{base}/poster.png" alt="Delirium Tremens" class="aspect-square w-full object-cover" />
 				</div>
 				<h2 class="text-xl font-bold text-[var(--text)]">Delirium Tremens</h2>
 				<p class="mt-2 text-sm text-[var(--text-secondary)]">

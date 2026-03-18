@@ -41,7 +41,7 @@ export default {
 						},
 						'blockquote': {
 							'border-left-color': 'var(--primary)',
-							'background-color': 'rgba(236, 72, 153, 0.05)',
+							'background-color': 'rgba(45, 212, 191, 0.05)',
 							'padding': '1rem 1.5rem',
 							'border-radius': '0 0.5rem 0.5rem 0',
 							'font-style': 'italic',
