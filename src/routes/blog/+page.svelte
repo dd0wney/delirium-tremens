@@ -1,57 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { chapters } from '$lib/data/chapters';
-	import Search from '$lib/components/Search.svelte';
-	import ArticleCard from '$lib/components/ArticleCard.svelte';
-	import { fade } from 'svelte/transition';
-
-	// Convert chapters to articles format with more detailed metadata
-	const articles = chapters.map(chapter => ({
-		title: chapter.title,
-		description: chapter.description || `Deep dive into ${chapter.title.toLowerCase()} with practical examples and interview-focused solutions.`,
-		slug: chapter.slug,
-		date: chapter.date || "2024-03-20",
-		category: chapter.category || "Uncategorized",
-		tags: chapter.tags || [],
-		featured: chapter.chapter === 1
-	}));
-
-	const categories = [...new Set(articles.map(article => article.category))];
-	let filteredArticles = $state(articles);
-	let selectedCategory: string | null = $state(null);
-	let searchQuery = $state('');
-	let selectedTags: string[] = $state([]);
-
-	function handleSearch(detail: { query: string; category: string | null; tags: string[] }) {
-		searchQuery = detail.query.toLowerCase();
-		const category = detail.category;
-		selectedTags = detail.tags;
-
-		filteredArticles = articles.filter(article => {
-			const matchesSearch =
-				article.title.toLowerCase().includes(searchQuery) ||
-				article.description.toLowerCase().includes(searchQuery);
-
-			const matchesCategory = !category || article.category === category;
-			const matchesTags = selectedTags.length === 0 || selectedTags.every(tag => article.tags?.includes(tag));
-
-			return matchesSearch && matchesCategory && matchesTags;
-		});
-	}
-
-	let hasActiveFilters = $derived(searchQuery !== '' || selectedTags.length > 0);
-	let searchResetKey = $state(0);
-
-	function clearFilters() {
-		searchQuery = '';
-		selectedCategory = null;
-		selectedTags = [];
-		filteredArticles = articles;
-		searchResetKey++;
-	}
-
-	const featuredArticles = articles.filter(a => a.featured);
-	const regularArticles = articles.filter(a => !a.featured);
 </script>
 
 <svelte:head>
@@ -62,69 +11,57 @@
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-<div class="relative min-h-screen bg-[var(--background)]">
-	<!-- Hero Section -->
-	<div class="relative isolate overflow-hidden">
-		<div class="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
-			<div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
-				<div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-					<h1 class="text-4xl font-bold tracking-tight text-[var(--primary)] sm:text-6xl">
-						Articles
-					</h1>
-					<p class="relative mt-6 text-lg leading-8 text-[var(--text)]/80 sm:max-w-md lg:max-w-none">
-						Algorithms, data structures, system design, and security through practical examples and interview-focused solutions.
-					</p>
-				</div>
-			</div>
-		</div>
+<div class="pt-16 pb-12 sm:pb-4 lg:pt-12">
+	<div class="lg:px-8">
+	<div class="lg:max-w-4xl">
+	<div class="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:px-0">
+		<h1 class="text-2xl leading-7 font-bold text-[var(--text)]">All Articles</h1>
+	</div>
+	</div>
 	</div>
 
-	<!-- Main Content -->
-	<div class="mx-auto max-w-7xl px-6 lg:px-8">
-		<div class="mx-auto max-w-2xl lg:max-w-none">
-			<!-- Search -->
-			<div class="mb-16">
-				{#key searchResetKey}
-					<Search {categories} {selectedCategory} onsearch={handleSearch} />
-				{/key}
-			</div>
+	<div class="divide-y divide-[var(--border)] sm:mt-4 lg:mt-8 lg:border-t lg:border-[var(--border)]">
+		{#each chapters as episode (episode.slug)}
+			<article class="py-10 sm:py-12">
+				<div class="lg:px-8"><div class="lg:max-w-4xl"><div class="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:px-0">
+					<div class="flex flex-col items-start">
+						<time datetime={episode.date} class="order-first font-mono text-sm leading-7 text-[var(--text-muted)]">
+							{new Date(episode.date ?? '').toLocaleDateString('en-US', {
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric'
+							})}
+						</time>
 
-			<!-- Featured Articles -->
-			{#if featuredArticles.length > 0 && !searchQuery}
-				<div class="mb-24">
-					<h2 class="sr-only">Featured Articles</h2>
-					<div class="space-y-16">
-						{#each featuredArticles as article (article.slug)}
-							<ArticleCard {article} featured />
-						{/each}
-					</div>
-				</div>
-			{/if}
+						<h2 class="mt-2 text-lg font-bold text-[var(--text)]">
+							<a href="{base}/blog/{episode.slug}" class="hover:text-[var(--primary)]">
+								{episode.title}
+							</a>
+						</h2>
 
-			<!-- Regular Articles -->
-			<div class="space-y-16 border-t border-[var(--primary)]/10 pt-16">
-				{#if filteredArticles.length === 0}
-					<div class="flex flex-col items-center gap-4 py-8">
-						<p class="text-center text-lg text-[var(--text-muted)]">
-							No articles match your filters.
+						<p class="mt-1 text-base leading-7 text-[var(--text-secondary)]">
+							{episode.description}
 						</p>
-						{#if hasActiveFilters}
-							<button
-								onclick={clearFilters}
-								class="rounded-lg border border-[var(--primary)]/20 px-4 py-2 text-sm text-[var(--primary)] transition-colors hover:bg-[var(--primary)]/10"
+
+						<div class="mt-4 flex items-center gap-4">
+							<a
+								href="{base}/blog/{episode.slug}"
+								class="flex items-center text-sm leading-6 font-bold text-[var(--primary)] hover:text-[var(--primary-hover)] active:text-[var(--primary-hover)]"
 							>
-								Clear filters
-							</button>
-						{/if}
-					</div>
-				{:else}
-					{#each filteredArticles as article (article.slug)}
-						<div transition:fade>
-							<ArticleCard {article} />
+								Read article
+							</a>
+							<span aria-hidden="true" class="text-sm font-bold text-[var(--text-muted)]">/</span>
+							<a
+								href="{base}/blog/{episode.slug}"
+								class="flex items-center text-sm leading-6 font-bold text-[var(--primary)] hover:text-[var(--primary-hover)] active:text-[var(--primary-hover)]"
+								aria-label="Show notes for {episode.title}"
+							>
+								Show notes
+							</a>
 						</div>
-					{/each}
-				{/if}
-			</div>
-		</div>
+					</div>
+				</div></div></div>
+			</article>
+		{/each}
 	</div>
 </div>
