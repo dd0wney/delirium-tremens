@@ -5,7 +5,7 @@
 	let { metadata, children }: { metadata: PageMetadata; children: import('svelte').Snippet } = $props();
 </script>
 
-<article class="prose prose-lg prose-invert mx-auto max-w-3xl px-6 py-24 lg:px-8 sm:py-32">
+<article class="prose prose-lg mx-auto max-w-3xl px-6 py-24 lg:px-8 sm:py-32">
 	<header class="not-prose mb-16">
 		<h1 class="text-4xl font-bold tracking-tight text-[var(--primary)] sm:text-5xl">
 			{metadata.title}

@@ -19,7 +19,7 @@
 				<span class="font-medium">{ref.title}.</span>
 				<span class="italic">{ref.source}.</span>
 				{#if ref.url}
-					<a href={ref.url} class="text-[#FF1493] no-underline hover:text-[#FF69B4]"> [Link] </a>
+					<a href={ref.url} class="text-[var(--primary)] no-underline hover:text-[var(--primary-hover)]"> [Link] </a>
 				{/if}
 				{#if ref.doi}
 					<span>DOI: {ref.doi}</span>

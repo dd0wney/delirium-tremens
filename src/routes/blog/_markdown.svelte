@@ -5,7 +5,7 @@
 	let { references = [], readingTime, children } = $props();
 </script>
 
-<article class="prose prose-invert w-full focus:outline-none" role="main" aria-label="Main content">
+<article class="prose w-full focus:outline-none" role="main" aria-label="Main content">
 	{#if readingTime}
 		<div class="mx-auto mb-4 w-full max-w-prose">
 			<span class="text-sm text-[var(--text-muted)]">{readingTime}</span>

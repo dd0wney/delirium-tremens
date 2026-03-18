@@ -9,7 +9,7 @@
 <article class="py-16 lg:py-36">
 	<ArticleHeader article={data.article} />
 
-	<div class="prose prose-lg prose-invert mt-14 max-w-[75ch]">
+	<div class="prose prose-lg mt-14 max-w-[75ch]">
 		{@render children()}
 	</div>
 </article>

@@ -6,10 +6,20 @@
 	let audio = $state<HTMLAudioElement>(undefined!);
 	let progressBar = $state<HTMLDivElement>(undefined!);
 	let isDragging = $state(false);
+	let previousAudioUrl = $state<string | undefined>(undefined);
 
+	// Only update audio.src when the article URL actually changes
+	$effect(() => {
+		const url = $player.currentArticle?.audioUrl;
+		if (audio && url && url !== previousAudioUrl) {
+			audio.src = url;
+			previousAudioUrl = url;
+		}
+	});
+
+	// Handle play/pause separately so currentTime updates don't restart audio
 	$effect(() => {
 		if (audio && $player.currentArticle) {
-			audio.src = $player.currentArticle.audioUrl || '';
 			if ($player.isPlaying) audio.play();
 			else audio.pause();
 		}
@@ -108,7 +118,7 @@
 			>
 				<div
 					class="h-full rounded-full bg-[var(--primary)]"
-					style="width: {($player.currentTime / $player.duration) * 100}%"
+					style="width: {$player.duration > 0 ? ($player.currentTime / $player.duration) * 100 : 0}%"
 				></div>
 			</div>
 		</div>

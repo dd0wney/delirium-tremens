@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { theme } from '$lib/stores/theme';
-	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
 	let currentTheme: 'light' | 'dark' = $state('dark');
@@ -8,10 +7,6 @@
 	// Subscribe to theme changes
 	theme.subscribe((value) => {
 		currentTheme = value;
-	});
-
-	onMount(() => {
-		theme.initialize();
 	});
 
 	function toggleTheme() {

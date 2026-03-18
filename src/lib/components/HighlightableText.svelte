@@ -43,7 +43,7 @@
 
 <div
   bind:this={container}
-  class="prose prose-invert"
+  class="prose"
 >
   <div
     role="textbox"

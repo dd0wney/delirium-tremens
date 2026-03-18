@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import ArticleHeader from '$lib/components/ArticleHeader.svelte';
 	import type { Article, Chapter } from '$lib/types';
 	import type { Snippet } from 'svelte';
@@ -21,6 +22,12 @@
 </svelte:head>
 
 <article class="py-16 lg:py-36">
+	<a
+		href="{base}/blog"
+		class="mb-6 inline-block text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--primary)]"
+	>
+		&larr; Back to Articles
+	</a>
 	<ArticleHeader article={data.article} />
 
 	{#if chapter?.sections?.length}
@@ -40,7 +47,7 @@
 		</nav>
 	{/if}
 
-	<div class="prose prose-lg prose-invert mt-14 max-w-[75ch]
+	<div class="prose prose-lg mt-14 max-w-[75ch]
 		prose-p:text-[var(--text)]
 		prose-li:text-[var(--text)]
 		prose-strong:text-[var(--text)]

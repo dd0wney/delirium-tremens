@@ -28,7 +28,7 @@
 	{/if}
 	<article
 		bind:this={contentElement}
-		class="prose prose-invert mx-auto w-full max-w-4xl
+		class="prose mx-auto w-full max-w-4xl
 		prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal prose-headings:text-[var(--prose-headings)]
 		prose-h1:text-xl prose-h2:text-lg prose-h3:text-base
 		prose-p:text-[var(--text)]

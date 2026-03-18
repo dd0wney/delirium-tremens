@@ -20,11 +20,12 @@
 	let filteredArticles = $state(articles);
 	let selectedCategory: string | null = $state(null);
 	let searchQuery = $state('');
+	let selectedTags: string[] = $state([]);
 
 	function handleSearch(detail: { query: string; category: string | null; tags: string[] }) {
 		searchQuery = detail.query.toLowerCase();
 		const category = detail.category;
-		const tags = detail.tags;
+		selectedTags = detail.tags;
 
 		filteredArticles = articles.filter(article => {
 			const matchesSearch =
@@ -32,10 +33,21 @@
 				article.description.toLowerCase().includes(searchQuery);
 
 			const matchesCategory = !category || article.category === category;
-			const matchesTags = tags.length === 0 || tags.every(tag => article.tags?.includes(tag));
+			const matchesTags = selectedTags.length === 0 || selectedTags.every(tag => article.tags?.includes(tag));
 
 			return matchesSearch && matchesCategory && matchesTags;
 		});
+	}
+
+	let hasActiveFilters = $derived(searchQuery !== '' || selectedTags.length > 0);
+	let searchResetKey = $state(0);
+
+	function clearFilters() {
+		searchQuery = '';
+		selectedCategory = null;
+		selectedTags = [];
+		filteredArticles = articles;
+		searchResetKey++;
 	}
 
 	const featuredArticles = articles.filter(a => a.featured);
@@ -72,7 +84,9 @@
 		<div class="mx-auto max-w-2xl lg:max-w-none">
 			<!-- Search -->
 			<div class="mb-16">
-				<Search {categories} {selectedCategory} onsearch={handleSearch} />
+				{#key searchResetKey}
+					<Search {categories} {selectedCategory} onsearch={handleSearch} />
+				{/key}
 			</div>
 
 			<!-- Featured Articles -->
@@ -90,9 +104,19 @@
 			<!-- Regular Articles -->
 			<div class="space-y-16 border-t border-[var(--primary)]/10 pt-16">
 				{#if filteredArticles.length === 0}
-					<p class="text-center text-lg text-[var(--text-muted)]">
-						No articles found matching your search criteria.
-					</p>
+					<div class="flex flex-col items-center gap-4 py-8">
+						<p class="text-center text-lg text-[var(--text-muted)]">
+							No articles match your filters.
+						</p>
+						{#if hasActiveFilters}
+							<button
+								onclick={clearFilters}
+								class="rounded-lg border border-[var(--primary)]/20 px-4 py-2 text-sm text-[var(--primary)] transition-colors hover:bg-[var(--primary)]/10"
+							>
+								Clear filters
+							</button>
+						{/if}
+					</div>
 				{:else}
 					{#each filteredArticles as article (article.slug)}
 						<div transition:fade>

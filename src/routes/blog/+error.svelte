@@ -25,7 +25,7 @@
 
 		<div class="mt-10 flex items-center justify-center gap-6">
 			<a
-				href="{base}/articles"
+				href="{base}/blog"
 				class="rounded-lg bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--primary-hover)]"
 			>
 				&larr; Browse Articles

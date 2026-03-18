@@ -2,7 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import { chapters } from '$lib/data/chapters';
 
-	let { categories = [], selectedCategory = null, onsearch }: {
+	let { categories = [], selectedCategory: initialCategory = null, onsearch }: {
 		categories?: string[];
 		selectedCategory?: string | null;
 		onsearch?: (detail: { query: string; category: string | null; tags: string[] }) => void;
@@ -11,6 +11,7 @@
 	let searchQuery = $state('');
 	let isSearchFocused = $state(false);
 	let selectedTags: string[] = $state([]);
+	let localCategory = $state<string | null>(initialCategory);
 
 	// Get unique tags from all chapters
 	let allTags = $derived([...new Set(chapters.flatMap((chapter) => chapter.tags))].sort());
@@ -18,13 +19,13 @@
 	function handleSearch() {
 		onsearch?.({
 			query: searchQuery,
-			category: selectedCategory,
+			category: localCategory,
 			tags: selectedTags
 		});
 	}
 
 	function handleCategorySelect(category: string | null) {
-		selectedCategory = category;
+		localCategory = category;
 		handleSearch();
 	}
 

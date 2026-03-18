@@ -25,7 +25,7 @@
               {new Date(article.date).toLocaleDateString()}
             </time>
             <h3 class="mt-4 text-2xl font-semibold text-[var(--primary)]">
-              <a href="{base}/book/{article.slug}">
+              <a href="{base}/blog/{article.slug}">
                 {article.title}
               </a>
             </h3>
@@ -46,7 +46,7 @@
             {new Date(article.date).toLocaleDateString()}
           </time>
           <h3 class="mt-3 text-lg font-semibold text-[var(--primary)]">
-            <a href="{base}/book/{article.slug}">
+            <a href="{base}/blog/{article.slug}">
               {article.title}
             </a>
           </h3>

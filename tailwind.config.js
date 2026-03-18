@@ -37,6 +37,14 @@ export default {
 							'&:hover': {
 								'color': 'var(--primary-hover)'
 							}
+						},
+						'blockquote': {
+							'border-left-color': 'var(--primary)',
+							'background-color': 'rgba(147, 51, 234, 0.05)',
+							'padding': '1rem 1.5rem',
+							'border-radius': '0 0.5rem 0.5rem 0',
+							'font-style': 'italic',
+							'color': 'var(--text)'
 						}
 					}
 				},
