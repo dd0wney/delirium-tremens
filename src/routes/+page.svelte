@@ -12,14 +12,18 @@
 </svelte:head>
 
 <div class="pt-16 pb-12 sm:pb-4 lg:pt-12">
-	<div class="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4">
+	<div class="lg:px-8">
+	<div class="lg:max-w-4xl">
+	<div class="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:px-0">
 		<h1 class="text-2xl leading-7 font-bold text-[var(--text)]">Episodes</h1>
+	</div>
+	</div>
 	</div>
 
 	<div class="divide-y divide-[var(--border)] sm:mt-4 lg:mt-8 lg:border-t lg:border-[var(--border)]">
 		{#each chapters as episode, index (episode.slug)}
 			<article class="py-10 sm:py-12">
-				<div class="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4">
+				<div class="lg:px-8"><div class="lg:max-w-4xl"><div class="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:px-0">
 					<div class="flex flex-col items-start">
 						<!-- Date in monospace -->
 						<time datetime={episode.date} class="order-first font-mono text-sm leading-7 text-[var(--text-muted)]">
@@ -53,7 +57,7 @@
 							</a>
 						</div>
 					</div>
-				</div>
+				</div></div></div>
 			</article>
 		{/each}
 	</div>

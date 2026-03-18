@@ -21,7 +21,9 @@
 	<meta property="og:type" content="article" />
 </svelte:head>
 
-<article class="mx-auto max-w-2xl px-4 sm:px-6">
+<article class="lg:px-8">
+<div class="lg:max-w-4xl">
+<div class="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:px-0">
 	<div class="py-16 lg:py-36 flex flex-col">
 		<ArticleHeader article={data.article} />
 
@@ -53,4 +55,6 @@
 			{/if}
 		</nav>
 	{/if}
+</div>
+</div>
 </article>
