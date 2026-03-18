@@ -10,7 +10,8 @@ const FILE_BASED_SLUGS = new Set([
     'strings',
     'linked-lists',
     'primitive-types',
-    'references'
+    'references',
+    'hash-tables-everywhere'
 ]);
 
 export function load({ params }): { article: Chapter; prevArticle: Chapter | null; nextArticle: Chapter | null } {

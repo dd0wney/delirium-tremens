@@ -1,0 +1,52 @@
+---
+title: Why Hash Tables Are Everywhere
+chapter: 0
+category: Podcast
+---
+
+## Topics
+
+- What makes hash tables O(1) on average, and why "on average" is doing a lot of heavy lifting in that sentence
+- The birthday paradox and why collisions happen sooner than you think — at just 23 entries in a 365-slot table you've got a 50% chance
+- How Python dicts, JavaScript objects, and Go maps all handle collisions differently: chaining vs. open addressing vs. Robin Hood hashing
+- The real cost of hash table resizing: why your "O(1) insert" occasionally takes O(n), and how amortized analysis makes that okay
+- Why interviewers love asking "design an LRU cache" and how it's really just a hash table married to a doubly-linked list
+
+## The Interview Question That Trips Everyone Up
+
+Given an array of integers and a target sum, find two numbers that add up to the target. The brute force is O(n²). The hash table solution is O(n). But most candidates fumble the edge cases:
+
+```python
+def two_sum(nums: list[int], target: int) -> tuple[int, int]:
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return (seen[complement], i)
+        seen[num] = i
+    raise ValueError("No solution found")
+```
+
+The key insight: you don't need to scan backwards. Build the map as you go forward.
+
+## When Hash Tables Aren't The Answer
+
+- When you need sorted order — use a balanced BST or skip list instead
+- When your hash function is adversarial — hello, HashDoS attacks in web frameworks circa 2011
+- When memory matters more than speed — hash tables waste space on empty buckets and pointers
+- When your keys aren't hashable — floating point equality is a minefield
+
+## System Design: Where Hash Tables Hide
+
+- **DNS resolution**: Your browser's DNS cache is a hash table mapping domains to IPs
+- **Database indexes**: Hash indexes give O(1) point lookups but can't do range queries
+- **Load balancers**: Consistent hashing distributes requests across servers — it's a hash table with a clever twist
+- **Caching layers**: Redis, Memcached — giant distributed hash tables
+- **Bloom filters**: Probabilistic hash tables that tell you "definitely not in the set" or "maybe in the set"
+
+## Links
+
+- [Hash Table on Wikipedia](https://en.wikipedia.org/wiki/Hash_table) — surprisingly good coverage of implementation variants
+- [Robin Hood Hashing Explained](https://programming.guide/robin-hood-hashing.html) — the cleverest collision resolution strategy
+- [Python dict implementation (CPython)](https://github.com/python/cpython/blob/main/Objects/dictobject.c) — if you want to see how the sausage is made
+- [Consistent Hashing paper by Karger et al.](https://dl.acm.org/doi/10.1145/258533.258660) — the 1997 paper that powers modern distributed systems

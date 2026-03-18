@@ -7,6 +7,7 @@ const BASE_URL = 'https://dd0wney.github.io/delirium-tremens';
 
 // Chapters that have actual content pages under /blog/
 const PUBLISHED_CHAPTER_SLUGS = new Set([
+	'hash-tables-everywhere',
 	'introduction',
 	'arrays',
 	'strings',

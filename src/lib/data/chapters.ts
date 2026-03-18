@@ -2,6 +2,18 @@ import type { Chapter } from '$lib/types';
 
 export const chapters: Chapter[] = [
 	{
+		title: 'Why Hash Tables Are Everywhere',
+		slug: 'hash-tables-everywhere',
+		chapter: 0,
+		description: 'From Python dicts to database indexes to DNS caches — hash tables are the most important data structure you\'ll never think about. We dig into why they\'re fast, when they\'re slow, and the one interview question that trips everyone up.',
+		date: '2026-03-18',
+		category: 'Podcast',
+		tags: ['hash-tables', 'data-structures', 'interviews', 'system-design'],
+		audioUrl: '/audio/episode-1.mp3',
+		episodeNumber: 1,
+		sections: []
+	},
+	{
 		title: 'Getting Started with Algorithms',
 		slug: 'introduction',
 		chapter: 1,
