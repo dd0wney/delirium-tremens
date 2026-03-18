@@ -1,7 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 	import References from '$lib/components/References.svelte';
+	import PlayButton from '$lib/components/PlayButton.svelte';
 	import { chapters } from '$lib/data/chapters';
+	import { player } from '$lib/stores/player';
 
 	/** @type {{ title?: string; chapter?: number; category?: string; references?: string[]; readingTime?: string; children: import('svelte').Snippet }} */
 	let { title, chapter, category, references = [], readingTime, children } = $props();
@@ -9,10 +11,12 @@
 	/** @type {HTMLElement | undefined} */
 	let articleEl;
 
-	// Look up full chapter data for date and description
+	// Look up full chapter data for date, description, and audioUrl
 	const chapterData = chapters.find(c => c.chapter === chapter);
 	const date = chapterData?.date;
 	const description = chapterData?.description;
+	const audioUrl = chapterData?.audioUrl;
+	const episodeNumber = chapterData?.episodeNumber;
 
 	onMount(() => {
 		if (!articleEl) return;
@@ -74,9 +78,18 @@
 				</time>
 			{/if}
 
-			<h1 class="mt-2 text-4xl font-bold text-[var(--text)]">
-				{#if chapter}<span class="text-[var(--primary)]">{chapter}: </span>{/if}{title}
-			</h1>
+			<div class="flex items-center gap-6">
+				{#if audioUrl && chapterData}
+					<PlayButton
+						playing={$player.currentArticle?.slug === chapterData.slug && $player.isPlaying}
+						article={chapterData}
+						size="lg"
+					/>
+				{/if}
+				<h1 class="mt-2 text-4xl font-bold text-[var(--text)]">
+					{#if episodeNumber != null}<span class="text-[var(--primary)]">{episodeNumber}: </span>{/if}{title}
+				</h1>
+			</div>
 
 			{#if description}
 				<p class="mt-3 text-lg leading-8 font-medium text-[var(--text-secondary)]">
