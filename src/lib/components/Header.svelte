@@ -17,7 +17,7 @@
 	}
 </script>
 
-<header class="fixed inset-x-0 top-0 z-50 backdrop-blur">
+<header class="fixed inset-x-0 top-0 z-50 bg-[var(--background)]/80 backdrop-blur border-b border-[var(--border)]">
 	<nav class="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Global">
 		<div class="relative flex h-16 items-center justify-between">
 			<div class="flex items-center gap-8">
