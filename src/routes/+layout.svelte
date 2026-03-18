@@ -14,6 +14,18 @@
 	import Menu from 'lucide-svelte/icons/menu';
 	import X from 'lucide-svelte/icons/x';
 	import Github from 'lucide-svelte/icons/github';
+	import Headphones from 'lucide-svelte/icons/headphones';
+	import Podcast from 'lucide-svelte/icons/podcast';
+	import Radio from 'lucide-svelte/icons/radio';
+	import Rss from 'lucide-svelte/icons/rss';
+
+	let currentPath = $derived(page.url.pathname);
+	function isActive(href: string): boolean {
+		const clean = href.replace(/\/$/, '') || '/';
+		const current = currentPath.replace(/\/$/, '') || '/';
+		if (clean === '/' || clean === base || clean === `${base}/`) return current === '/' || current === base || current === `${base}`;
+		return current.startsWith(clean);
+	}
 
 	let { children }: { children: Snippet } = $props();
 	let hasAudio = $derived(!!$player.currentArticle?.audioUrl);
@@ -67,6 +79,43 @@
 					Deep dives into algorithms, data structures, system design, and security.
 				</p>
 			</div>
+
+			<!-- Navigation -->
+			<nav class="mb-8 flex gap-6 text-sm font-medium">
+				<a href="{base}/" class="transition-colors {isActive(`${base}/`) ? 'text-[var(--primary)]' : 'text-[var(--text-muted)] hover:text-[var(--text)]'}">
+					Home
+				</a>
+				<a href="{base}/blog" class="transition-colors {isActive(`${base}/blog`) ? 'text-[var(--primary)]' : 'text-[var(--text-muted)] hover:text-[var(--text)]'}">
+					Articles
+				</a>
+				<a href="{base}/about" class="transition-colors {isActive(`${base}/about`) ? 'text-[var(--primary)]' : 'text-[var(--text-muted)] hover:text-[var(--text)]'}">
+					About
+				</a>
+			</nav>
+
+			<!-- About blurb -->
+			<section class="mb-8">
+				<h2 class="flex items-center gap-2 font-mono text-sm font-medium text-[var(--text)]">
+					About
+				</h2>
+				<p class="mt-3 text-sm leading-6 text-[var(--text-muted)]">
+					Explore solutions to programming interview questions, algorithms, data structures, and system design
+					with detailed walkthroughs and practical examples.
+				</p>
+			</section>
+
+			<!-- Listen on -->
+			<section class="mb-8">
+				<h2 class="flex items-center gap-2 font-mono text-sm font-medium text-[var(--text)]">
+					Listen
+				</h2>
+				<div class="mt-4 flex gap-4">
+					<span class="text-[var(--text-muted)]"><Headphones size={20} /></span>
+					<span class="text-[var(--text-muted)]"><Podcast size={20} /></span>
+					<span class="text-[var(--text-muted)]"><Radio size={20} /></span>
+					<span class="text-[var(--text-muted)]"><Rss size={20} /></span>
+				</div>
+			</section>
 
 			<!-- Flex spacer -->
 			<div class="flex-1"></div>
@@ -126,13 +175,13 @@
 			</div>
 
 			<nav class="space-y-3">
-				<a href="{base}/" class="flex items-center gap-3 text-base font-medium text-[var(--text)] transition-colors hover:text-[var(--primary)]">
+				<a href="{base}/" class="flex items-center gap-3 text-base font-medium transition-colors {isActive(`${base}/`) ? 'text-[var(--primary)]' : 'text-[var(--text)] hover:text-[var(--primary)]'}">
 					<Home size={18} /> Home
 				</a>
-				<a href="{base}/blog" class="flex items-center gap-3 text-base font-medium text-[var(--text)] transition-colors hover:text-[var(--primary)]">
+				<a href="{base}/blog" class="flex items-center gap-3 text-base font-medium transition-colors {isActive(`${base}/blog`) ? 'text-[var(--primary)]' : 'text-[var(--text)] hover:text-[var(--primary)]'}">
 					<BookOpen size={18} /> Articles
 				</a>
-				<a href="{base}/about" class="flex items-center gap-3 text-base font-medium text-[var(--text)] transition-colors hover:text-[var(--primary)]">
+				<a href="{base}/about" class="flex items-center gap-3 text-base font-medium transition-colors {isActive(`${base}/about`) ? 'text-[var(--primary)]' : 'text-[var(--text)] hover:text-[var(--primary)]'}">
 					<User size={18} /> About
 				</a>
 			</nav>
