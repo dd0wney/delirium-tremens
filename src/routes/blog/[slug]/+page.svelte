@@ -27,7 +27,7 @@
 	<meta property="og:type" content="article" />
 </svelte:head>
 
-<article class="py-16 lg:py-36">
+<article class="mx-auto max-w-3xl px-6 py-16 lg:py-36">
 	<a
 		href="{base}/blog"
 		class="mb-6 inline-block text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--primary)]"
