@@ -16,6 +16,7 @@
 	});
 
 	function formatTime(seconds: number): string {
+		if (!Number.isFinite(seconds)) return '0:00';
 		const mins = Math.floor(seconds / 60);
 		const secs = Math.floor(seconds % 60);
 		return `${mins}:${secs.toString().padStart(2, '0')}`;
@@ -55,7 +56,7 @@
 	});
 </script>
 
-{#if $player.currentArticle}
+{#if $player.currentArticle?.audioUrl}
 	<div class="fixed bottom-0 left-0 right-0 bg-[var(--background)] shadow-lg">
 		<div class="mx-auto max-w-7xl px-4 py-4">
 			<div class="flex items-center gap-4">

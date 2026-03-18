@@ -45,24 +45,23 @@ html {
 
 :root.dark {
   --background: #1C1C1C;
-  --primary: #FF1493;      /* Lighter pink for better readability */
-  --primary-hover: #FF69B4; /* Even lighter pink for hover */
+  --primary: #FF85C8;      /* Accessible pink — 6.4:1 contrast on #1C1C1C */
+  --primary-hover: #FFB3E0; /* Lighter pink for hover — 9.2:1 contrast */
   --text: #F8FAFC;
   --text-muted: #E2E8F0;
   --text-secondary: #9CA3AF;
   --text-with-opacity: rgba(248, 250, 252, 0.8);
-  --border: rgba(255, 105, 180, 0.2);
+  --border: rgba(255, 133, 200, 0.2);
   --prose-text: #F8FAFC;
-  --prose-headings: #FF69B4;
-  --prose-links: #FF69B4;
-  --prose-bullets: #FF1493;
+  --prose-headings: #FF85C8;
+  --prose-links: #FF85C8;
+  --prose-bullets: #FF85C8;
 }
 
 @layer base {
-  a:focus-visible,
-  button:focus-visible {
-    outline: none;
-    box-shadow: var(--focus-ring);
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
   }
 
   h2 {

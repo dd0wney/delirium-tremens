@@ -34,7 +34,7 @@
 					<ThemeToggle />
 				</div>
 				<a
-					href="https://github.com/yourusername/your-repo"
+					href="https://github.com/dd0wney/delirium-tremens"
 					class="hidden lg:block lg:text-sm lg:font-semibold lg:text-[var(--text)]"
 				>
 					View on GitHub
@@ -95,7 +95,7 @@
 				About
 			</a>
 			<a
-				href="https://github.com/yourusername/your-repo"
+				href="https://github.com/dd0wney/delirium-tremens"
 				class="text-lg font-semibold text-[var(--text)] transition-colors duration-200 hover:text-[var(--primary)]"
 			>
 				View on GitHub

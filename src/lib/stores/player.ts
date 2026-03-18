@@ -20,11 +20,14 @@ function createPlayerStore() {
 
     return {
         subscribe,
-        play: (article: Article) => update(state => ({
-            ...state,
-            currentArticle: article,
-            isPlaying: true
-        })),
+        play: (article: Article) => update(state => {
+            if (!article.audioUrl) return state;
+            return {
+                ...state,
+                currentArticle: article,
+                isPlaying: true
+            };
+        }),
         pause: () => update(state => ({ ...state, isPlaying: false })),
         toggle: () => update(state => ({ ...state, isPlaying: !state.isPlaying })),
         setTime: (time: number) => update(state => ({ ...state, currentTime: time })),

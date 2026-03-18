@@ -23,6 +23,13 @@
 </svelte:head>
 
 <div class="min-h-screen bg-[var(--background)] pb-24">
+	<a
+		href="#main-content"
+		class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-[var(--primary)] focus:px-4 focus:py-2 focus:text-white focus:outline-none"
+	>
+		Skip to main content
+	</a>
+
 	<Header />
 
 	<div class="relative isolate">
@@ -35,7 +42,7 @@
 		</div>
 
 		<!-- Main content -->
-		<main>
+		<main id="main-content">
 			{@render children()}
 		</main>
 	</div>
