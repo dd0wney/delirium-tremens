@@ -1,21 +1,15 @@
 <script lang="ts">
 	import type { Article } from '$lib/types';
 	import { getTopicAssets } from '$lib/utils/icons';
-	import PlayButton from './PlayButton.svelte';
 
-	let { article, playing = false }: {
+	let { article }: {
 		article: Article;
-		playing?: boolean;
 	} = $props();
 
 	let assets = $derived(getTopicAssets(article.category.toLowerCase()));
 </script>
 
 <header class="relative mb-10 xl:mb-0">
-	<div class="pointer-events-none absolute left-[max(-0.5rem,calc(50%-18.625rem))] top-0 z-50 flex h-4 items-center sm:left-0 xl:left-auto xl:right-[calc(100%+1.5rem)] xl:h-auto">
-		<PlayButton {playing} size="lg" />
-	</div>
-
 	<div class="flex flex-col">
 		<div class="order-first flex items-center gap-3 text-sm text-[var(--text-muted)]">
 			<time datetime={article.date}>

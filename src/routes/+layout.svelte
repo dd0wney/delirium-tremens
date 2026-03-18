@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import Header from '$lib/components/Header.svelte';
-	import PodcastPlayer from '$lib/components/PodcastPlayer.svelte';
 	import '../app.css';
 	import { theme } from '$lib/stores/theme';
 	import { onMount } from 'svelte';
@@ -22,7 +21,7 @@
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-<div class="min-h-screen bg-[var(--background)] pb-24">
+<div class="min-h-screen bg-[var(--background)] flex flex-col">
 	<a
 		href="#main-content"
 		class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-[var(--primary)] focus:px-4 focus:py-2 focus:text-white focus:outline-none"
@@ -32,7 +31,7 @@
 
 	<Header />
 
-	<div class="relative isolate">
+	<div class="relative isolate flex-1">
 		<!-- Background gradient decoration -->
 		<div class="absolute inset-x-0 top-0 -z-10 h-[1000px] overflow-hidden">
 			<div class="absolute inset-0 bg-gradient-to-b from-[var(--primary)]/5 to-transparent"></div>
@@ -46,5 +45,20 @@
 			{@render children()}
 		</main>
 	</div>
-	<PodcastPlayer />
+
+	<footer class="border-t border-[var(--border)] py-8 px-6">
+		<div class="mx-auto max-w-7xl flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+			<p class="text-sm text-[var(--text-muted)]">
+				&copy; 2024 Darragh Downey
+			</p>
+			<a
+				href="https://github.com/dd0wney/delirium-tremens"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--primary)]"
+			>
+				GitHub
+			</a>
+		</div>
+	</footer>
 </div>

@@ -13,13 +13,17 @@ const FILE_BASED_SLUGS = new Set([
     'references'
 ]);
 
-export function load({ params }): { article: Chapter } {
-    const chapter = chapters.find(c => c.slug === params.slug);
-    if (chapter) {
-        return { article: chapter };
+export function load({ params }): { article: Chapter; prevArticle: Chapter | null; nextArticle: Chapter | null } {
+    const idx = chapters.findIndex(c => c.slug === params.slug);
+    if (idx === -1) {
+        throw error(404, 'Article not found');
     }
 
-    throw error(404, 'Article not found');
+    return {
+        article: chapters[idx],
+        prevArticle: chapters[idx - 1] ?? null,
+        nextArticle: chapters[idx + 1] ?? null
+    };
 }
 
 export function entries() {
