@@ -8,7 +8,16 @@
 	import { player } from '$lib/stores/player';
 	import { onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
-	import { Home, BookOpen, User, Menu, X, Github, Headphones, Podcast, Radio, Rss } from 'lucide-svelte';
+	import Home from 'lucide-svelte/icons/home';
+	import BookOpen from 'lucide-svelte/icons/book-open';
+	import User from 'lucide-svelte/icons/user';
+	import Menu from 'lucide-svelte/icons/menu';
+	import X from 'lucide-svelte/icons/x';
+	import Github from 'lucide-svelte/icons/github';
+	import Headphones from 'lucide-svelte/icons/headphones';
+	import Podcast from 'lucide-svelte/icons/podcast';
+	import Radio from 'lucide-svelte/icons/radio';
+	import Rss from 'lucide-svelte/icons/rss';
 
 	let { children }: { children: Snippet } = $props();
 	let hasAudio = $derived(!!$player.currentArticle?.audioUrl);
