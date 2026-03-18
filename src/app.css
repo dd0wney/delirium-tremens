@@ -79,6 +79,42 @@ html {
 }
 
 /* ==========================================================================
+   Prose heading accent bars (Transmit-style colored decorations)
+   ========================================================================== */
+
+.prose h2 {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.prose h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 0.25rem;
+  height: 1.2em;
+  border-radius: 0 9999px 9999px 0;
+  background: var(--primary);
+}
+
+.prose h3 {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.prose h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 0.25rem;
+  height: 1.2em;
+  border-radius: 0 9999px 9999px 0;
+  background: #8B5CF6;
+}
+
+/* ==========================================================================
    Code block & syntax highlighting (Prism.js tokens from mdsvex)
    ========================================================================== */
 

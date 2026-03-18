@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Article } from '$lib/types';
+	import type { Article, Chapter } from '$lib/types';
 	import { getTopicAssets } from '$lib/utils/icons';
 	import PlayButton from './PlayButton.svelte';
 	import { player } from '$lib/stores/player';
@@ -10,43 +10,37 @@
 
 	let assets = $derived(getTopicAssets(article.category.toLowerCase()));
 	let isPlaying = $derived($player.currentArticle?.slug === article.slug && $player.isPlaying);
+	let chapterNum = $derived('chapter' in article ? (article as Chapter).chapter : null);
 </script>
 
-<header class="relative mb-10 xl:mb-0">
-	{#if article.audioUrl}
-		<div class="mb-6">
+<header class="flex flex-col items-start gap-6">
+	<!-- Date in monospace -->
+	<div class="flex items-center gap-3 font-mono text-sm text-[var(--text-muted)]">
+		<time datetime={article.date}>
+			{new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+		</time>
+		{#if article.readingTime}
+			<span aria-hidden="true">&middot;</span>
+			<span>{article.readingTime}</span>
+		{/if}
+	</div>
+
+	<!-- Play button + Title row -->
+	<div class="flex items-center gap-6">
+		{#if article.audioUrl}
 			<PlayButton
 				playing={isPlaying}
 				article={article}
 				size="lg"
 			/>
-		</div>
-	{/if}
-	<div class="flex flex-col">
-		<div class="order-first flex items-center gap-3 text-sm text-[var(--text-muted)]">
-			<time datetime={article.date}>
-				{new Date(article.date).toLocaleDateString()}
-			</time>
-			{#if article.readingTime}
-				<span aria-hidden="true">&middot;</span>
-				<span>{article.readingTime}</span>
-			{/if}
-		</div>
-
-		<h1 class="mt-6 text-4xl font-bold text-[var(--primary)] sm:text-5xl">
-			{article.title}
+		{/if}
+		<h1 class="text-4xl font-bold text-[var(--text)] sm:text-5xl">
+			{#if chapterNum}<span class="text-[var(--primary)]">{chapterNum}: </span>{/if}{article.title}
 		</h1>
-
-		<p class="mt-6 text-lg text-[var(--text)]/80">
-			{article.description}
-		</p>
-
-		<div class="mt-6 flex flex-wrap gap-2">
-			{#each article.tags || [] as tag}
-				<span class="rounded-full bg-[var(--primary)]/10 px-3 py-1 text-sm text-[var(--primary)]">
-					{tag}
-				</span>
-			{/each}
-		</div>
 	</div>
+
+	<!-- Description -->
+	<p class="text-lg font-medium leading-8 text-[var(--text-muted)]">
+		{article.description}
+	</p>
 </header>
