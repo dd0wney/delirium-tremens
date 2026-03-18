@@ -77,3 +77,311 @@ html {
     text-decoration: none;
   }
 }
+
+/* ==========================================================================
+   Code block & syntax highlighting (Prism.js tokens from mdsvex)
+   ========================================================================== */
+
+:root {
+  /* Dark-mode code palette (default) */
+  --code-bg: #252525;
+  --code-text: #E2E8F0;
+  --code-border: rgba(255, 133, 200, 0.15);
+  --code-comment: #6B7280;
+  --code-keyword: var(--primary);
+  --code-string: #86EFAC;
+  --code-function: #7DD3FC;
+  --code-number: #FDBA74;
+  --code-operator: #E2E8F0;
+  --code-punctuation: #9CA3AF;
+  --code-class-name: #C4B5FD;
+  --code-boolean: #FDBA74;
+  --code-property: #93C5FD;
+  --code-regex: #FCA5A5;
+  --code-attr-name: #C4B5FD;
+  --code-attr-value: #86EFAC;
+  --code-tag: #FF85C8;
+  --code-selector: #FF85C8;
+  --code-builtin: #C4B5FD;
+  --code-important: #FCA5A5;
+  --code-line-highlight: rgba(255, 133, 200, 0.08);
+  --code-inline-bg: rgba(255, 133, 200, 0.1);
+  --code-scrollbar-thumb: rgba(255, 133, 200, 0.25);
+  --code-scrollbar-track: transparent;
+}
+
+:root.light {
+  --code-bg: #F8F8FC;
+  --code-text: #1F2937;
+  --code-border: rgba(147, 51, 234, 0.15);
+  --code-comment: #9CA3AF;
+  --code-keyword: #9333EA;
+  --code-string: #16A34A;
+  --code-function: #2563EB;
+  --code-number: #D97706;
+  --code-operator: #374151;
+  --code-punctuation: #6B7280;
+  --code-class-name: #7C3AED;
+  --code-boolean: #D97706;
+  --code-property: #2563EB;
+  --code-regex: #DC2626;
+  --code-attr-name: #7C3AED;
+  --code-attr-value: #16A34A;
+  --code-tag: #9333EA;
+  --code-selector: #9333EA;
+  --code-builtin: #7C3AED;
+  --code-important: #DC2626;
+  --code-line-highlight: rgba(147, 51, 234, 0.06);
+  --code-inline-bg: rgba(147, 51, 234, 0.08);
+  --code-scrollbar-thumb: rgba(147, 51, 234, 0.2);
+  --code-scrollbar-track: transparent;
+}
+
+/* ---- Pre & code base styles ---- */
+
+pre[class*="language-"],
+code[class*="language-"] {
+  color: var(--code-text);
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  tab-size: 2;
+  hyphens: none;
+}
+
+pre[class*="language-"] {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  position: relative;
+}
+
+/* Scrollbar styling for code blocks */
+pre[class*="language-"]::-webkit-scrollbar {
+  height: 6px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-track {
+  background: var(--code-scrollbar-track);
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background: var(--code-scrollbar-thumb);
+  border-radius: 3px;
+}
+
+/* Inline code (not inside pre) */
+:not(pre) > code {
+  background: var(--code-inline-bg);
+  color: var(--primary);
+  padding: 0.15em 0.4em;
+  border-radius: 0.375rem;
+  font-size: 0.875em;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  word-break: break-word;
+}
+
+/* ---- Prism token colors ---- */
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--code-comment);
+  font-style: italic;
+}
+
+.token.keyword,
+.token.control,
+.token.directive,
+.token.unit {
+  color: var(--code-keyword);
+  font-weight: 600;
+}
+
+.token.string,
+.token.char,
+.token.template-string,
+.token.inserted {
+  color: var(--code-string);
+}
+
+.token.function {
+  color: var(--code-function);
+}
+
+.token.number,
+.token.boolean {
+  color: var(--code-number);
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: var(--code-operator);
+}
+
+.token.punctuation {
+  color: var(--code-punctuation);
+}
+
+.token.class-name,
+.token.type-name,
+.token.maybe-class-name {
+  color: var(--code-class-name);
+}
+
+.token.property,
+.token.constant {
+  color: var(--code-property);
+}
+
+.token.regex {
+  color: var(--code-regex);
+}
+
+.token.attr-name {
+  color: var(--code-attr-name);
+}
+
+.token.attr-value {
+  color: var(--code-attr-value);
+}
+
+.token.tag,
+.token.selector {
+  color: var(--code-tag);
+}
+
+.token.builtin,
+.token.symbol {
+  color: var(--code-builtin);
+}
+
+.token.important,
+.token.deleted {
+  color: var(--code-important);
+  font-weight: 600;
+}
+
+.token.atrule {
+  color: var(--code-keyword);
+}
+
+.token.variable {
+  color: var(--code-text);
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+/* ---- Language label (top-right corner) ---- */
+
+pre[class*="language-"]::before {
+  content: attr(class);
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-size: 0.7rem;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--code-comment);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Clean up the label — extract just the language name from class string */
+pre.language-javascript::before { content: 'js'; }
+pre.language-typescript::before { content: 'ts'; }
+pre.language-python::before { content: 'py'; }
+pre.language-bash::before { content: 'sh'; }
+pre.language-shell::before { content: 'sh'; }
+pre.language-css::before { content: 'css'; }
+pre.language-html::before { content: 'html'; }
+pre.language-json::before { content: 'json'; }
+pre.language-rust::before { content: 'rs'; }
+pre.language-go::before { content: 'go'; }
+pre.language-c::before { content: 'c'; }
+pre.language-cpp::before { content: 'c++'; }
+pre.language-java::before { content: 'java'; }
+pre.language-svelte::before { content: 'svelte'; }
+pre.language-yaml::before { content: 'yaml'; }
+pre.language-toml::before { content: 'toml'; }
+pre.language-sql::before { content: 'sql'; }
+pre.language-graphql::before { content: 'gql'; }
+pre.language-markdown::before { content: 'md'; }
+pre.language-diff::before { content: 'diff'; }
+pre.language-text::before { content: ''; }
+
+/* ---- Override Tailwind Typography prose defaults for code ---- */
+
+.prose pre {
+  background: var(--code-bg) !important;
+  color: var(--code-text) !important;
+  border: 1px solid var(--code-border);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.prose pre code {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.prose code::before,
+.prose code::after {
+  content: none !important;
+}
+
+.prose :not(pre) > code {
+  background: var(--code-inline-bg) !important;
+  color: var(--primary) !important;
+  padding: 0.15em 0.4em;
+  border-radius: 0.375rem;
+  font-size: 0.875em;
+  font-weight: 500;
+}
+
+/* ---- Diff highlighting ---- */
+
+.token.deleted {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.token.inserted {
+  background: rgba(34, 197, 94, 0.15);
+}
+
+/* ---- Selection styling inside code ---- */
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  background: rgba(147, 51, 234, 0.3);
+}

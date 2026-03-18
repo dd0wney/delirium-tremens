@@ -3,21 +3,38 @@
 	import { base } from '$app/paths';
 </script>
 
-<div
-	class="flex min-h-[100dvh] flex-col items-center justify-center bg-[#1C1C1C] px-6 py-24 sm:py-32 lg:px-8"
->
+<div class="flex min-h-[60dvh] flex-col items-center justify-center px-6 py-24 sm:py-32 lg:px-8">
 	<div class="text-center">
-		<p class="text-6xl font-semibold text-[#FF1493]">{$page.status}</p>
-		<h1 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">Page not found</h1>
-		<p class="mt-6 text-base leading-7 text-gray-300">
-			Sorry, we couldn't find the page you're looking for.
+		<p class="text-7xl font-bold text-[var(--primary)]">{$page.status}</p>
+
+		<h1 class="mt-4 text-3xl font-bold tracking-tight text-[var(--text)] sm:text-5xl">
+			{#if $page.status === 404}
+				Page Not Found
+			{:else}
+				{$page.error?.message || 'Something went wrong'}
+			{/if}
+		</h1>
+
+		<p class="mt-6 text-base leading-7 text-[var(--text-muted)]">
+			{#if $page.status === 404}
+				Sorry, the page you're looking for doesn't exist or has been moved.
+			{:else}
+				An unexpected error occurred. Please try again later.
+			{/if}
 		</p>
-		<div class="mt-10">
+
+		<div class="mt-10 flex items-center justify-center gap-6">
 			<a
 				href="{base}/"
-				class="text-sm font-semibold text-white transition-colors duration-200 hover:text-[#FF1493]"
+				class="rounded-lg bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--primary-hover)]"
 			>
-				← Back to home
+				&larr; Back to Home
+			</a>
+			<a
+				href="{base}/articles"
+				class="text-sm font-semibold text-[var(--text)] transition-colors duration-200 hover:text-[var(--primary)]"
+			>
+				Browse Articles &rarr;
 			</a>
 		</div>
 	</div>

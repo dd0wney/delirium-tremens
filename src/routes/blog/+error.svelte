@@ -3,37 +3,39 @@
 	import { base } from '$app/paths';
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-[var(--background)] p-4">
+<div class="flex min-h-[60dvh] flex-col items-center justify-center px-6 py-24 sm:py-32 lg:px-8">
 	<div class="text-center">
-		<h1 class="mb-4 text-4xl font-bold text-[var(--primary)]">
+		<p class="text-7xl font-bold text-[var(--primary)]">{$page.status}</p>
+
+		<h1 class="mt-4 text-3xl font-bold tracking-tight text-[var(--text)] sm:text-5xl">
 			{#if $page.status === 404}
-				Chapter Not Found
+				Article Not Found
 			{:else}
-				{$page.status}: {$page.error?.message || 'Something went wrong'}
+				{$page.error?.message || 'Something went wrong'}
 			{/if}
 		</h1>
 
-		<div class="mb-8 text-[var(--text)]">
+		<p class="mt-6 text-base leading-7 text-[var(--text-muted)]">
 			{#if $page.status === 404}
-				<p>Sorry, we couldn't find the page you're looking for.</p>
+				Sorry, this article doesn't exist or may have been moved.
 			{:else}
-				<p>An unexpected error occurred. Please try again later.</p>
+				An unexpected error occurred. Please try again later.
 			{/if}
-		</div>
+		</p>
 
-		<div class="flex justify-center gap-4">
+		<div class="mt-10 flex items-center justify-center gap-6">
+			<a
+				href="{base}/articles"
+				class="rounded-lg bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--primary-hover)]"
+			>
+				&larr; Browse Articles
+			</a>
 			<a
 				href="{base}/"
-				class="rounded-lg bg-[var(--primary)]/10 px-4 py-2 text-[var(--primary)] transition-colors hover:bg-[var(--primary)]/20"
+				class="text-sm font-semibold text-[var(--text)] transition-colors duration-200 hover:text-[var(--primary)]"
 			>
-				← Back to Home
+				Back to Home &rarr;
 			</a>
-			<button
-				onclick={() => history.back()}
-				class="rounded-lg bg-[var(--primary)]/10 px-4 py-2 text-[var(--primary)] transition-colors hover:bg-[var(--primary)]/20"
-			>
-				Go Back
-			</button>
 		</div>
 	</div>
-</div> 
+</div>
