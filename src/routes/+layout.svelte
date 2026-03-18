@@ -1,12 +1,15 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import Header from '$lib/components/Header.svelte';
+	import PodcastPlayer from '$lib/components/PodcastPlayer.svelte';
 	import '../app.css';
 	import { theme } from '$lib/stores/theme';
+	import { player } from '$lib/stores/player';
 	import { onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
 
 	let { children }: { children: Snippet } = $props();
+	let hasAudio = $derived(!!$player.currentArticle?.audioUrl);
 
 	onMount(() => {
 		theme.initialize();
@@ -46,7 +49,9 @@
 		</main>
 	</div>
 
-	<footer class="border-t border-[var(--border)] py-8 px-6">
+	<PodcastPlayer />
+
+	<footer class="border-t border-[var(--border)] py-8 px-6" class:pb-24={hasAudio}>
 		<div class="mx-auto max-w-7xl flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
 			<p class="text-sm text-[var(--text-muted)]">
 				&copy; 2024 Darragh Downey

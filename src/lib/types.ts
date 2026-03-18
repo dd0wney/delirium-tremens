@@ -30,6 +30,8 @@ export interface Article {
   tags: string[];
   readingTime?: string;
   featured?: boolean;
+  audioUrl?: string;
+  episodeNumber?: number;
 }
 
 export interface Chapter extends Article {
