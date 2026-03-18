@@ -1,7 +1,8 @@
 <script>
-	/** @type {string[]} */
-	export let references = [];
 	import References from '$lib/components/References.svelte';
+
+	/** @type {{ references?: string[]; children: import('svelte').Snippet }} */
+	let { references = [], children } = $props();
 </script>
 
 <article class="prose prose-invert w-full focus:outline-none" role="main" aria-label="Main content">
@@ -12,7 +13,7 @@
 		prose-ul:marker:text-[var(--prose-bullets)]
 		prose-ol:marker:text-[var(--prose-bullets)]"
 	>
-		<slot />
+		{@render children()}
 		{#if references.length > 0}
 			<References citationIds={references} />
 		{/if}

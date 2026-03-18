@@ -2,7 +2,7 @@
 	import type { Article } from '$lib/types';
 	import Tag from './Tag.svelte';
 
-	export let article: Article;
+	let { article }: { article: Article } = $props();
 </script>
 
 <div class="flex flex-wrap items-center gap-2">
@@ -22,4 +22,4 @@
 			{/if}
 		</div>
 	{/if}
-</div> 
+</div>

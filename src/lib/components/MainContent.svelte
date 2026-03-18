@@ -5,8 +5,8 @@
 	import PopularHighlights from './PopularHighlights.svelte';
 	import { validateSectionIds } from '$lib/utils/sections';
 	import { onMount } from 'svelte';
-	
-	export let currentChapter: Chapter | undefined;
+
+	let { currentChapter, children }: { currentChapter?: Chapter; children: import('svelte').Snippet } = $props();
 	let contentElement: HTMLElement;
 
 	onMount(() => {
@@ -28,9 +28,9 @@
 	{/if}
 	<article
 		bind:this={contentElement}
-		class="prose prose-invert mx-auto w-full max-w-4xl 
+		class="prose prose-invert mx-auto w-full max-w-4xl
 		prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal prose-headings:text-[var(--prose-headings)]
-		prose-h1:text-xl prose-h2:text-lg prose-h3:text-base 
+		prose-h1:text-xl prose-h2:text-lg prose-h3:text-base
 		prose-p:text-[var(--text)]
 		prose-a:text-[var(--prose-links)]
 		prose-a:no-underline hover:prose-a:text-[var(--primary-hover)]
@@ -46,7 +46,7 @@
 		sm:prose-h1:text-2xl sm:prose-h2:text-xl sm:prose-h3:text-lg"
 	>
 		<HighlightableText chapterId={currentChapter?.slug ?? ''}>
-			<slot />
+			{@render children()}
 		</HighlightableText>
 	</article>
 </main>

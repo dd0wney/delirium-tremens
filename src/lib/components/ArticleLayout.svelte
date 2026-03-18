@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import type { PageMetadata } from '$lib/types';
-	
-	export let metadata: PageMetadata;
+
+	let { metadata, children }: { metadata: PageMetadata; children: import('svelte').Snippet } = $props();
 </script>
 
 <article class="prose prose-lg prose-invert mx-auto max-w-3xl px-6 py-24 lg:px-8 sm:py-32">
@@ -10,7 +10,7 @@
 		<h1 class="text-4xl font-bold tracking-tight text-[var(--primary)] sm:text-5xl">
 			{metadata.title}
 		</h1>
-		
+
 		<div class="mt-6 flex items-center gap-x-4 text-xs">
 			{#if metadata.date}
 				<time datetime={metadata.date} class="text-[var(--text-muted)]">
@@ -23,7 +23,7 @@
 		</div>
 	</header>
 
-	<slot />
+	{@render children()}
 
 	{#if metadata.references?.length}
 		<footer class="not-prose mt-16 border-t border-[var(--primary)]/10 pt-8">
@@ -35,4 +35,4 @@
 			</ul>
 		</footer>
 	{/if}
-</article> 
+</article>

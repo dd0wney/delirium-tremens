@@ -2,7 +2,7 @@
 	import ArticleHeader from '$lib/components/ArticleHeader.svelte';
 	import type { Article } from '$lib/types';
 
-	export let data: { article: Article };
+	let { data }: { data: { article: Article } } = $props();
 </script>
 
 <article class="py-16 lg:py-36">

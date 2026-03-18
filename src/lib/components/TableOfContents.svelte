@@ -4,17 +4,18 @@
 	import type { Chapter } from '$lib/types';
 	import { getArticleUrl, getBlogUrl, getSectionUrl } from '$lib/utils/navigation';
 	import { activeSection } from '$lib/stores/activeSection';
-	import { chapters } from '$lib/data/chapters';
 	import { browser } from '$app/environment';
 	import { chapters as chapterData } from '$lib/data/chapters';
 
-	export let chapterList: Chapter[] = chapterData;
-	export let side: 'left' | 'right' = 'left';
-	export let sections: { title: string; id: string }[] = [];
+	let { chapterList = chapterData, side = 'left', sections = [] }: {
+		chapterList?: Chapter[];
+		side?: 'left' | 'right';
+		sections?: { title: string; id: string }[];
+	} = $props();
 
-	$: currentPath = $page.url.pathname;
-	$: currentChapter = chapterList.find((c) => c.slug === $page.params.chapter);
-	$: hasActiveSections = currentChapter?.sections && currentChapter.sections.length > 0;
+	let currentPath = $derived($page.url.pathname);
+	let currentChapter = $derived(chapterList.find((c) => c.slug === $page.params.chapter));
+	let hasActiveSections = $derived(currentChapter?.sections && currentChapter.sections.length > 0);
 
 	function handleKeydown(e: KeyboardEvent, href: string) {
 		if (!browser) return;
@@ -77,8 +78,10 @@
 								<a
 									href={getSectionUrl(chapter, section.id)}
 									tabindex="0"
-									on:keydown|preventDefault={(e: KeyboardEvent) =>
-										handleSectionKeydown(e, chapter, section.id)}
+									onkeydown={(e: KeyboardEvent) => {
+										e.preventDefault();
+										handleSectionKeydown(e, chapter, section.id);
+									}}
 									class="text-[var(--text-secondary)] no-underline transition-colors duration-200 hover:text-[var(--primary)]
 										{$activeSection === section.id ? 'text-[var(--primary)]' : ''}"
 								>

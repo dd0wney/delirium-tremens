@@ -5,6 +5,9 @@
 	import '../app.css';
 	import { theme } from '$lib/stores/theme';
 	import { onMount } from 'svelte';
+	import type { Snippet } from 'svelte';
+
+	let { children }: { children: Snippet } = $props();
 
 	onMount(() => {
 		theme.initialize();
@@ -13,7 +16,7 @@
 
 <div class="min-h-screen bg-[var(--background)] pb-24">
 	<Header />
-	
+
 	<div class="relative isolate">
 		<!-- Background gradient decoration -->
 		<div class="absolute inset-x-0 top-0 -z-10 h-[1000px] overflow-hidden">
@@ -25,7 +28,7 @@
 
 		<!-- Main content -->
 		<main>
-			<slot></slot>
+			{@render children()}
 		</main>
 	</div>
 	<PodcastPlayer />

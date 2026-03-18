@@ -3,10 +3,9 @@
 	import type { Article } from '$lib/types';
 	import { getTopicAssets } from '$lib/utils/icons';
 
-	export let article: Article;
-	export let featured = false;
+	let { article, featured = false }: { article: Article; featured?: boolean } = $props();
 
-	$: assets = getTopicAssets(article.category.toLowerCase());
+	let assets = $derived(getTopicAssets(article.category.toLowerCase()));
 </script>
 
 <article class="relative flex flex-col gap-8 {featured ? 'lg:flex-row' : ''}">

@@ -1,6 +1,5 @@
 <script lang="ts">
-	export let id: string;
-	export let title: string;
+	let { id, title, children }: { id: string; title: string; children: import('svelte').Snippet } = $props();
 </script>
 
 <section {id} class="scroll-mt-24">
@@ -15,6 +14,6 @@
 		</a>
 	</h2>
 	<div class="text-[var(--text)]">
-		<slot />
+		{@render children()}
 	</div>
-</section> 
+</section>

@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
-	let currentTheme: 'light' | 'dark' = 'dark';
+	let currentTheme: 'light' | 'dark' = $state('dark');
 
 	// Subscribe to theme changes
 	theme.subscribe((value) => {
@@ -28,7 +28,7 @@
 <button
 	type="button"
 	class="text-[var(--text)] transition-colors duration-200 hover:text-[var(--primary)]"
-	on:click={toggleTheme}
+	onclick={toggleTheme}
 	aria-label="Toggle theme"
 >
 	{#if currentTheme !== 'dark'}

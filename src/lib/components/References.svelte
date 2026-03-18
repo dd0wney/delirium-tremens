@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { references, type Reference } from '$lib/data/references';
 
-	export let citationIds: string[] = [];
+	let { citationIds = [] as string[] }: { citationIds?: string[] } = $props();
 
-	$: citations = references
-		.filter((ref) => citationIds.includes(ref.id))
-		.sort((a, b) => a.authors[0].localeCompare(b.authors[0]));
+	let citations = $derived(
+		references
+			.filter((ref) => citationIds.includes(ref.id))
+			.sort((a, b) => a.authors[0].localeCompare(b.authors[0]))
+	);
 </script>
 
 <div class="references">

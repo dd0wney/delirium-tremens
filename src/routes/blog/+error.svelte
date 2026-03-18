@@ -29,7 +29,7 @@
 				← Back to Home
 			</a>
 			<button
-				on:click={() => history.back()}
+				onclick={() => history.back()}
 				class="rounded-lg bg-[var(--primary)]/10 px-4 py-2 text-[var(--primary)] transition-colors hover:bg-[var(--primary)]/20"
 			>
 				Go Back

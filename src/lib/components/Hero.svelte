@@ -1,6 +1,5 @@
 <script lang="ts">
-	export let title: string;
-	export let description: string;
+	let { title, description }: { title: string; description: string } = $props();
 </script>
 
 <div class="py-24 sm:py-32">
@@ -12,4 +11,4 @@
 			{description}
 		</p>
 	</div>
-</div> 
+</div>

@@ -1,11 +1,13 @@
 <script lang="ts">
   import { highlightStore } from '$lib/stores/highlights';
-  
-  export let chapterId: string;
-  
-  $: popularHighlights = $highlightStore.popularHighlights
-    .filter(h => h.chapterId === chapterId)
-    .slice(0, 3);
+
+  let { chapterId }: { chapterId: string } = $props();
+
+  let popularHighlights = $derived(
+    $highlightStore.popularHighlights
+      .filter(h => h.chapterId === chapterId)
+      .slice(0, 3)
+  );
 </script>
 
 {#if popularHighlights.length > 0}
@@ -24,4 +26,4 @@
       {/each}
     </div>
   </div>
-{/if} 
+{/if}

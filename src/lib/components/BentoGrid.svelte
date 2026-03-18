@@ -1,6 +1,6 @@
 <script lang="ts">
   import { base } from '$app/paths';
-  
+
   interface Article {
     title: string;
     description: string;
@@ -10,8 +10,8 @@
     category: string;
     featured?: boolean;
   }
-  
-  export let articles: Article[];
+
+  let { articles }: { articles: Article[] } = $props();
 </script>
 
 <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -60,4 +60,4 @@
       {/each}
     </div>
   </div>
-</div> 
+</div>

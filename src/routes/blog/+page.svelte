@@ -18,23 +18,23 @@
 	}));
 
 	const categories = [...new Set(articles.map(article => article.category))];
-	let filteredArticles = articles;
-	let selectedCategory: string | null = null;
-	let searchQuery = '';
-	
-	function handleSearch({ detail }: CustomEvent<{ query: string; category: string | null; tags: string[] }>) {
+	let filteredArticles = $state(articles);
+	let selectedCategory: string | null = $state(null);
+	let searchQuery = $state('');
+
+	function handleSearch(detail: { query: string; category: string | null; tags: string[] }) {
 		searchQuery = detail.query.toLowerCase();
 		const category = detail.category;
 		const tags = detail.tags;
-		
+
 		filteredArticles = articles.filter(article => {
-			const matchesSearch = 
+			const matchesSearch =
 				article.title.toLowerCase().includes(searchQuery) ||
 				article.description.toLowerCase().includes(searchQuery);
-				
+
 			const matchesCategory = !category || article.category === category;
 			const matchesTags = tags.length === 0 || tags.every(tag => article.tags?.includes(tag));
-			
+
 			return matchesSearch && matchesCategory && matchesTags;
 		});
 	}
@@ -65,7 +65,7 @@
 		<div class="mx-auto max-w-2xl lg:max-w-none">
 			<!-- Search -->
 			<div class="mb-16">
-				<Search {categories} {selectedCategory} on:search={handleSearch} />
+				<Search {categories} {selectedCategory} onsearch={handleSearch} />
 			</div>
 
 			<!-- Featured Articles -->
@@ -96,4 +96,4 @@
 			</div>
 		</div>
 	</div>
-</div> 
+</div>

@@ -3,9 +3,11 @@
 	import TableOfContents from './TableOfContents.svelte';
 	import type { Chapter } from '$lib/types';
 
-	export let isSidebarOpen: boolean;
-	export let onCloseSidebar: () => void;
-	export let chapters: Chapter[];
+	let { isSidebarOpen, onCloseSidebar, chapters }: {
+		isSidebarOpen: boolean;
+		onCloseSidebar: () => void;
+		chapters: Chapter[];
+	} = $props();
 </script>
 
 {#if isSidebarOpen}
@@ -13,8 +15,8 @@
 		role="button"
 		tabindex="0"
 		class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
-		on:click={onCloseSidebar}
-		on:keydown={(e: KeyboardEvent) => {
+		onclick={onCloseSidebar}
+		onkeydown={(e: KeyboardEvent) => {
 			if (e.key === 'Escape') {
 				onCloseSidebar();
 			}

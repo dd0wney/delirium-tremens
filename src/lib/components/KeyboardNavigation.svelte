@@ -3,8 +3,7 @@
 	import type { Chapter } from '$lib/types';
 	import { getChapterUrl } from '$lib/utils/navigation';
 
-	export let prevChapter: Chapter | null;
-	export let nextChapter: Chapter | null;
+	let { prevChapter, nextChapter }: { prevChapter: Chapter | null; nextChapter: Chapter | null } = $props();
 
 	function handleKeydown(event: KeyboardEvent) {
 		if (event.altKey) {
@@ -25,4 +24,4 @@
 	}
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />

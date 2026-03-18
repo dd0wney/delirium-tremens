@@ -3,15 +3,17 @@
 	import { player } from '$lib/stores/player';
 	import PlayButton from './PlayButton.svelte';
 
-	let audio: HTMLAudioElement;
-	let progressBar: HTMLDivElement;
-	let isDragging = false;
+	let audio = $state<HTMLAudioElement>(undefined!);
+	let progressBar = $state<HTMLDivElement>(undefined!);
+	let isDragging = $state(false);
 
-	$: if (audio && $player.currentArticle) {
-		audio.src = $player.currentArticle.audioUrl || '';
-		if ($player.isPlaying) audio.play();
-		else audio.pause();
-	}
+	$effect(() => {
+		if (audio && $player.currentArticle) {
+			audio.src = $player.currentArticle.audioUrl || '';
+			if ($player.isPlaying) audio.play();
+			else audio.pause();
+		}
+	});
 
 	function formatTime(seconds: number): string {
 		const mins = Math.floor(seconds / 60);
@@ -58,7 +60,7 @@
 		<div class="mx-auto max-w-7xl px-4 py-4">
 			<div class="flex items-center gap-4">
 				<!-- Play/Pause Button -->
-				<PlayButton playing={$player.isPlaying} on:click={() => player.toggle()} />
+				<PlayButton playing={$player.isPlaying} onclick={() => player.toggle()} />
 
 				<!-- Title -->
 				<div class="flex-1">
@@ -83,7 +85,7 @@
 					step="0.1"
 					class="w-24"
 					value={$player.volume}
-					on:input={handleVolumeInput}
+					oninput={handleVolumeInput}
 				/>
 			</div>
 
@@ -97,11 +99,11 @@
 				aria-valuemin={0}
 				aria-valuemax={Math.floor($player.duration)}
 				aria-valuenow={Math.floor($player.currentTime)}
-				on:mousedown={() => (isDragging = true)}
-				on:mouseup={() => (isDragging = false)}
-				on:mouseleave={() => (isDragging = false)}
-				on:click={handleProgressClick}
-				on:keydown={handleProgressKeydown}
+				onmousedown={() => (isDragging = true)}
+				onmouseup={() => (isDragging = false)}
+				onmouseleave={() => (isDragging = false)}
+				onclick={handleProgressClick}
+				onkeydown={handleProgressKeydown}
 			>
 				<div
 					class="h-full rounded-full bg-[var(--primary)]"
@@ -112,4 +114,4 @@
 	</div>
 {/if}
 
-<audio bind:this={audio} on:timeupdate={handleTimeUpdate} on:ended={() => player.pause()}></audio>
+<audio bind:this={audio} ontimeupdate={handleTimeUpdate} onended={() => player.pause()}></audio>

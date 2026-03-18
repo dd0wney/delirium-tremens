@@ -3,9 +3,12 @@
 	import { fade } from 'svelte/transition';
 	import TableOfContents from '$lib/components/TableOfContents.svelte';
 	import { chapters } from '$lib/data/chapters';
+	import type { Snippet } from 'svelte';
 
-	$: currentSlug = $page.params.slug;
-	$: currentChapter = chapters.find(c => c.slug === currentSlug);
+	let { children }: { children: Snippet } = $props();
+
+	let currentSlug = $derived($page.params.slug);
+	let currentChapter = $derived(chapters.find(c => c.slug === currentSlug));
 </script>
 
 <div class="relative">
@@ -16,7 +19,7 @@
 				<!-- Main content -->
 				<div class="lg:col-span-8 xl:col-span-9">
 					<div transition:fade>
-						<slot />
+						{@render children()}
 					</div>
 				</div>
 
@@ -31,4 +34,4 @@
 			</div>
 		</div>
 	</div>
-</div> 
+</div>

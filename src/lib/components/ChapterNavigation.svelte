@@ -4,12 +4,11 @@
 	import KeyboardNavigation from './KeyboardNavigation.svelte';
 	import { getChapterUrl } from '$lib/utils/navigation';
 
-	export let chapters: Chapter[];
-	export let currentSlug: string | undefined = '';
+	let { chapters, currentSlug = '' }: { chapters: Chapter[]; currentSlug?: string } = $props();
 
-	$: currentIndex = chapters.findIndex((c) => c.slug === currentSlug);
-	$: prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null;
-	$: nextChapter = currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null;
+	let currentIndex = $derived(chapters.findIndex((c) => c.slug === currentSlug));
+	let prevChapter = $derived(currentIndex > 0 ? chapters[currentIndex - 1] : null);
+	let nextChapter = $derived(currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null);
 
 	function handleNavigate() {
 		window.scrollTo(0, 0);
@@ -27,7 +26,7 @@
 			<a
 				class="text-[var(--text)] no-underline hover:text-[var(--primary)]"
 				href={getChapterUrl(prevChapter)}
-				on:click={handleNavigate}
+				onclick={handleNavigate}
 				aria-label="Previous chapter: {prevChapter.title}"
 			>
 				← {prevChapter.title}
@@ -41,7 +40,7 @@
 			<a
 				href={getChapterUrl(nextChapter)}
 				class="text-[var(--text)] no-underline hover:text-[var(--primary)]"
-				on:click={handleNavigate}
+				onclick={handleNavigate}
 				aria-label="Next chapter: {nextChapter.title}"
 			>
 				{nextChapter.title} →
