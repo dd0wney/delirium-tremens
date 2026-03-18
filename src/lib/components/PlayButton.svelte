@@ -22,15 +22,15 @@
 
 <button
 	type="button"
-	class="group relative flex flex-shrink-0 items-center justify-center
-	{size === 'lg' ? 'h-18 w-18' : 'h-10 w-10'}
-	rounded-full bg-[var(--primary)] hover:bg-[var(--primary-hover)]"
+	class="group relative flex flex-shrink-0 items-center justify-center rounded-full
+	{size === 'lg' ? 'h-[4.5rem] w-[4.5rem]' : 'h-10 w-10'}
+	bg-slate-700 hover:bg-slate-900 focus:ring-3 focus:ring-slate-700 focus:ring-offset-4 focus:outline-hidden"
 	aria-label={playing ? 'Pause' : 'Play'}
 	onclick={handleClick}
 >
 	<div class="absolute -inset-3 md:hidden"></div>
 	<svg
-		class="h-5 w-5 fill-white group-active:fill-white/80"
+		class="{size === 'lg' ? 'h-9 w-9' : 'h-5 w-5'} fill-white group-active:fill-white/80"
 		viewBox="0 0 36 36"
 		aria-hidden="true"
 	>
